@@ -24,7 +24,7 @@ function HeaderPage(props) {
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex xxl:ml-[232px] xxl:mr-[248px]">
+      <div className="hidden lg:flex xxl:ml-[232px] xxl:mr-[248px] border-b-[1px] pb-3">
         <div className="flex justify-between mt-[24px] mx-[22px] w-full">
           <div>
             <img src={logo} alt="logo" className="xl:hidden" />
