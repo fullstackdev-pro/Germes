@@ -1,8 +1,13 @@
 import React from "react";
+import CatalogBody from "./Catalog/CatalogBody";
+import CatalogHeader from "./Catalog/CatalogHeader";
 
 function HomePage(props) {
   return (
-    <p></p>
+    <section>
+      <CatalogHeader />
+      <CatalogBody />
+    </section>
   );
 }
 
