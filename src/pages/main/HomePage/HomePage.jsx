@@ -1,12 +1,15 @@
 import React from "react";
-import CatalogBody from "./Catalog/CatalogBody";
-import CatalogHeader from "./Catalog/CatalogHeader";
+import Goods from "./Goods/Goods";
+import CatalogHeader from './Catalog/CatalogHeader';
+import CatalogBody from './Catalog/CatalogBody';
+
 
 function HomePage(props) {
   return (
     <section>
       <CatalogHeader />
       <CatalogBody />
+      <Goods/>
     </section>
   );
 }

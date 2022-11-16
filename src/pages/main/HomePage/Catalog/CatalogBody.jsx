@@ -153,20 +153,20 @@ function CatalogBody(props) {
           </div>
         </div>
       </div>
-      <div className="flex justify-between ml-[9px] mt-[19px] sm:px-4 md:px-0 md:ml-8 xl:mr-[2rem] xl:ml-[23rem] xxl:ml-[600px] xxl:mr-[280px]">
-        <div className="flex text-[11px]">
+      <div className="flex justify-between text-[11px] ml-[9px] mt-[19px] sm:px-4 md:px-0 md:ml-8 lg:ml-12 lg:text-[14px] xl:mr-[2rem] xl:ml-[23rem] xxl:ml-[600px] xxl:mr-[280px]">
+        <div className="flex">
           <BsTruck className="bg-[#9FA6EE1A] text-[#5661CB] text-[2rem] p-[4px] rounded-md mr-[6px]" />{" "}
           Доставка товара и аренда спецтехники
         </div>
-        <div className="flex text-[11px]">
+        <div className="flex">
           <AiOutlinePercentage className="bg-[#9FA6EE1A] text-[#5661CB] text-[2rem] p-[4px] rounded-md mr-[6px]" />{" "}
           Скидки оптовикам и застройщикам
         </div>
-        <div className="flex text-[11px]">
+        <div className="hidden md:flex">
           <BiRuble className="bg-[#9FA6EE1A] text-[#5661CB] text-[2rem] p-[4px] rounded-md mr-[6px] hidden md:grid" />{" "}
           Предлагаем лучшую цену
         </div>
-        <div className="flex text-[11px]">
+        <div className="hidden md:flex">
           <BsCalendarDate className="bg-[#9FA6EE1A] text-[#5661CB] text-[2rem] p-[4px] rounded-md mr-[6px] hidden md:grid" />{" "}
           Работаем 7 дней в неделю
         </div>
