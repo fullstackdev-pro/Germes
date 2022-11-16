@@ -21,13 +21,13 @@ function Goods(props) {
       >
         <SlStar className="hidden md:block md:absolute w-6 h-6 right-3 mt-1 text-[#5661CB]" />
         <div
-          className={`none md:block md:absolute text-[12px] text-white rounded-r ${
+          className={`hidden md:block md:absolute text-[12px] text-white rounded-r ${
             status === "Лидер продаж"
-              ? "bg-[#F2994A] py-[4px] px-[12px]"
+              ? "bg-[#F2994A] py-[4px] px-[12px] "
               : status === "Лучшая цена"
-              ? "bg-[#DD4747] py-[4px] px-[12px]"
-              : status === "Привезем сегодня"
-              ? "bg-[#27AE60E5] py-[4px] px-[12px]"
+              ? "bg-[#DD4747] py-[4px] px-[12px] "
+              : status === "Привезем сегодня" 
+              ? "bg-[#27AE60E5] py-[4px] px-[12px] "
               : ""
           }`}
         >
@@ -58,7 +58,7 @@ function Goods(props) {
         <div className="flex justify-between">
           <div className={`px-2 mt-[7px] md:mt-[11px]`}>
             <span
-              className={`font-medium text-[18px] ${
+              className={`font-medium text-[14px] md:text-[18px] ${
                 status === "Лучшая цена" ? "text-red-600" : ""
               }`}
             >
@@ -67,7 +67,7 @@ function Goods(props) {
             {" \u20BD "} / шт
           </div>
           <div
-            className={`px-2 mt-[7px] md:mt-[11px] text-[18px] ${
+            className={`px-2 mt-[9px] md:mt-[11px] text-[12px] md:text-[18px] ${
               status === "Лучшая цена" ? "line-through" : "hidden"
             }`}
           >
@@ -95,8 +95,8 @@ function Goods(props) {
 
   return (
     <Fragment>
-      <div className="md:px-[20px] mt-[20px] flex justify-between xxl:ml-[232px] xxl:mr-[266px]">
-        <h1 className="text-[18px] text-center font-medium md:text-left md:text-[20px] lg:text-[26px] xl:text-[36px]">
+      <div className="md:px-[20px] mt-[20px] md:flex md:justify-between xxl:ml-[232px] xxl:mr-[266px]">
+        <h1 className="text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px]">
           Спецпредложения
         </h1>
         <p className="hidden lg:flex text-[14px] text-red-600 font-medium mt-1 cursor-pointer xl:text-[16px]">
@@ -104,7 +104,7 @@ function Goods(props) {
           <HiOutlineArrowNarrowRight className="mt-1 ml-2" />
         </p>
       </div>
-      <div className="px-[20px] mt-[22px] grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="px-[12px] mt-[22px] grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:ml-[232px] xxl:mr-[266px]">
         {goodsList}
       </div>
     </Fragment>
