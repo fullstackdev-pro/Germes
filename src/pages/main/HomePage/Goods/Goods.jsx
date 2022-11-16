@@ -105,7 +105,9 @@ function Goods(props) {
         </p>
       </div>
       <div className="px-[12px] mt-[22px] grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:ml-[232px] xxl:mr-[266px]">
+        sadasdasdasdsa
         {goodsList}
+        askdaskjfdoiahsfgoadghagp
       </div>
     </Fragment>
   );
