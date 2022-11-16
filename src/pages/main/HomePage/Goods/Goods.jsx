@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { SlBasket, SlStar } from "react-icons/sl";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import {AiOutlineCheck} from 'react-icons/ai'
+import { AiOutlineCheck } from "react-icons/ai";
 
 function Goods(props) {
   function delivery(id) {
@@ -26,7 +26,7 @@ function Goods(props) {
               ? "bg-[#F2994A] py-[4px] px-[12px] "
               : status === "Лучшая цена"
               ? "bg-[#DD4747] py-[4px] px-[12px] "
-              : status === "Привезем сегодня" 
+              : status === "Привезем сегодня"
               ? "bg-[#27AE60E5] py-[4px] px-[12px] "
               : ""
           }`}
@@ -85,8 +85,8 @@ function Goods(props) {
             Купить в 1 клик
           </button>
           <button className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer">
-            <SlBasket className="xl:hidden"/>
-            <AiOutlineCheck className="hidden xl:flex"/>
+            <SlBasket className="xl:hidden" />
+            <AiOutlineCheck className="hidden xl:flex" />
           </button>
         </div>
       </div>
