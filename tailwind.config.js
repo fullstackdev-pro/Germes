@@ -15,7 +15,6 @@ module.exports = {
       'catalogbodysm': "url('/src/img/catalogBody/photo (2).png')",
       'catalogbodymd': "url('/src/img/catalogBody/photo (3).png')",
       'catalogbodylg': "url('/src/img/catalogBody/photo (4).png')",
-      
     },
   },
   plugins: [],
