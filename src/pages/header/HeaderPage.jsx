@@ -13,14 +13,14 @@ function HeaderPage(props) {
       <div className="lg:hidden block">
         <div className="flex justify-between mt-[14px] mx-5">
           <div>
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo"/>
           </div>
           <div className="flex mt-[2px]">
             <p className="w-[13rem] text-[20px] hidden md:flex">
               8 (843) 203-93-43
             </p>
-            <img src={phone} alt="phone" className="mr-8 md:hidden" />
-            <img src={vector} alt="Vector" />
+            <img src={phone} alt="phone" className="mr-2 md:hidden p-2" />
+            <img src={vector} alt="Vector" className="p-2"/>
           </div>
         </div>
       </div>

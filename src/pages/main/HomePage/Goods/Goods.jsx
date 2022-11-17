@@ -96,7 +96,7 @@ function Goods(props) {
   return (
     <Fragment>
       <div className="md:px-[20px] mt-[20px] md:flex md:justify-between xxl:ml-[232px] xxl:mr-[266px]">
-        <h1 className="text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px]">
+        <h1 className="text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px] ">
           Спецпредложения
         </h1>
         <p className="hidden lg:flex text-[14px] text-red-600 font-medium mt-1 cursor-pointer xl:text-[16px]">
