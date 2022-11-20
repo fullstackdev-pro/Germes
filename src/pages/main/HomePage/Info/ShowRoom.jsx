@@ -16,7 +16,7 @@ function ShowRoom(props) {
       <div className="mt-[20px] cursor-pointer grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         <img src={require("../../../../img/showroom/1.png")} alt="showroom" />
         <img src={require("../../../../img/showroom/2.png")} alt="showroom" />
-        <img src={require("../../../../img/showroom/3.png")} alt="showroom" />
+        <img src={require("../../../../img/showroom/3.png")} alt="showroom" className="hidden md:flex"/>
         <img src={require("../../../../img/showroom/2.png")} alt="showroom" className="hidden xl:flex"/>
       </div>
     </div>

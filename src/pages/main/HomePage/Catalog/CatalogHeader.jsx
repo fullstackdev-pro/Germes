@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Vector1 from "./images/Vector (1).png";
 import Search from "./images/Search.png";
 import Searchb from "./images/Searchb.png";
+import rightarrow from "./images/rigtarrow.png";
 
 function CatalogHeader(props) {
+  const [catalog, setCatalog] = useState(false);
+  
   return (
-    <section>
+    <section >
       {/* small */}
       <div className="mx-[7px] mt-4 bg-[#5661CB] px-3 rounded-lg md:flex md:justify-between lg:hidden">
         <div className="flex justify-between relative">
-          <img src={Vector1} alt="Vector1" className="py-3" />
+          <img
+            src={Vector1}
+            alt="Vector1"
+            className="py-3"
+            onClick={() => {
+              setCatalog((prew) => !prew);
+            }}
+          />
           <div className="table xs:absolute xs:left-8 xs:top-2.5 sm:relative sm:left-0 sm:top-0">
             <span className="text-white ml-4 pl-4 md:w-[18rem] align-middle table-cell">
               Каталог товаров
@@ -20,6 +30,84 @@ function CatalogHeader(props) {
             alt="Search"
             className="mt-[0.8rem] mr-1 h-[50%] md:hidden"
           />
+        </div>
+        <div
+          className={`${
+            catalog ? "block" : "hidden"
+          } top-30 p-[20px] right-1 rounded absolute z-10 bg-white w-[100vw] h-[100vh]`}
+        >
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Стеновые материалы</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Фасадные материалы</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Строительные блоки</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Отделочные материалы</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Сухие смеси</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Благоустройство</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Лако-красочные материалы</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px]">Прочие услуги</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
+          <div className="flex justify-between mt-5 py-1 cursor-pointer">
+            <p className="text-[14px] text-red-700">Распродажа товаров</p>
+            <img
+              src={rightarrow}
+              alt="arrow "
+              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+            />
+          </div>
         </div>
         <div className="hidden md:flex md:justify-between">
           <div className="table">

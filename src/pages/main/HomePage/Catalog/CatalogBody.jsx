@@ -7,6 +7,26 @@ import { BsTruck, BsCalendarDate } from "react-icons/bs";
 import { BiRuble } from "react-icons/bi";
 
 function CatalogBody(props) {
+  // let data = [
+  //   {
+  //     "title": "Кирпич облицовочный M95",
+  //     "price": 4500,
+  //     "info": "Кол-во на поддоне, шт. - 297 Формат одинарный",
+  //   },
+  // ];
+
+  // function GetData() {
+  //   data = useSelector((state) => state.data);
+  // }
+  // const [number, setNumber] = useState(0);
+  // const { title, id, price, info, status } = data[number];
+  // console.log(data[0])
+  // if (!data.length > 1) {
+  //   GetData()
+  // }else {
+    // let number = Math.trunc(Math.random() * 10) * 2;
+    // setNumber(number);
+  // }
   return (
     <section>
       <div className="lg:flex lg:justify-between lg:mx-[20px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
@@ -120,9 +140,7 @@ function CatalogBody(props) {
             <p className="pt-[31px] text-[22px]">
               Кирпич облицовочный M95 <br /> Воткинский
             </p>
-            <p className="text-[14px] font-light pt-[10px]">
-              Кол-во на поддоне, шт. - 297
-            </p>
+            <p className="text-[14px] font-light pt-[10px]">Кол-во на поддоне, шт. - 297</p>
             <p className="text-[14px] font-light pt-[3px]">Формат одинарный</p>
             <div className="text-[14px] font-light pt-[10px] ">
               <Link
@@ -139,7 +157,7 @@ function CatalogBody(props) {
               </Link>
             </div>
             <p className="pt-[13px]">
-              <span className="text-[26px]">4 500 </span>
+              <span className="text-[26px]">4500</span>
               {"\u20BD "} / шт
             </p>
             <div className="flex justify-start pb-[53px] pt-[18px]">

@@ -12,8 +12,13 @@ function Goods(props) {
     console.log(id);
   }
   const goodsArr = useSelector((state) => state.data);
-  let goodsList = goodsArr.map((data) => {
+  let goodsList = goodsArr.map((data, index) => {
     const { title, id, price, info, status } = data;
+    if (window.innerWidth<=320 && index>3) return ''
+    if (window.innerWidth<=480 && index>5) return ''
+    if (window.innerWidth<=768 && index>5) return ''
+    if (window.innerWidth<=1000 && index>7) return ''
+    if (window.innerWidth>1000 && index>9) return ''
     return (
       <div
         key={id}
@@ -36,7 +41,7 @@ function Goods(props) {
         <img
           src={require("../../../../img/goods/1.png")}
           className="p-4 md:mt-[30px] md:mx-[40px]"
-          alt=""
+          alt="goods"
         />
         <p className="text-[12px] font-medium px-2 md:text-[16px]">{title}</p>
         <p className="hidden md:grid md:text-[14px] md:font-light md:px-2 md:mt-[8px]">
@@ -67,7 +72,7 @@ function Goods(props) {
             {" \u20BD "} / шт
           </div>
           <div
-            className={`px-2 mt-[9px] md:mt-[11px] text-[12px] md:text-[18px] ${
+            className={`hidden md:flex px-2 mt-[9px] md:mt-[11px] text-[12px] md:text-[18px] ${
               status === "Лучшая цена" ? "line-through" : "hidden"
             }`}
           >
@@ -80,13 +85,13 @@ function Goods(props) {
             onClick={() => {
               buy(id);
             }}
-            className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%]"
+            className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]"
           >
             Купить в 1 клик
           </button>
           <button className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer">
-            <SlBasket className="xl:hidden" />
-            <AiOutlineCheck className="hidden xl:flex" />
+            <SlBasket className="" />
+            <AiOutlineCheck className="hidden " />
           </button>
         </div>
       </div>
@@ -95,7 +100,7 @@ function Goods(props) {
 
   return (
     <Fragment>
-      <div className="md:px-[20px] mt-[20px] md:flex md:justify-between xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="mt-[20px] md:flex md:justify-between md:px-[20px] xxl:ml-[232px] xxl:mr-[266px]">
         <h1 className="text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px] ">
           Спецпредложения
         </h1>
