@@ -15,15 +15,15 @@ function HeaderPage(props) {
   return (
     <section className="sticky top-0 w-full bg-white z-[9999]">
       <div className="lg:hidden block ">
-        <div className="flex justify-between pt-[14px] mx-5">
-          <div>
+        <div className="flex justify-between pt-[14px] ml-5 mr-3">
+          <div className="w-[50%]">
             <img src={logo} alt="logo" />
           </div>
-          <div className="flex mt-[2px] ">
+          <div className="flex mt-[2px]">
             <p className="w-[13rem] text-[20px] hidden md:flex">
               8 (843) 203-93-43
             </p>
-            <img src={phone} alt="phone" className="mr-2 md:hidden p-2" />
+            <img src={phone} alt="phone" className="md:hidden p-2" />
             <img
               src={menu ? close : vector}
               alt="Vector"

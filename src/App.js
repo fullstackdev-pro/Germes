@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import FooterPage from "./pages/footer/FooterPage";
 import HeaderPage from "./pages/header/HeaderPage";
-import ProductDetails from "./pages/main/CatalogPage/ProductDetails";
+import Product from "./pages/main/CatalogPage/Product";
 import HomePage from "./pages/main/HomePage/HomePage";
 import { dataFetched, dataFetching } from "./redux/actions";
 
@@ -58,7 +58,7 @@ function App() {
       <HeaderPage />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/product/:productId" element={<Product />} />
       </Routes>
       <FooterPage />
     </section>

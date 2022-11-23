@@ -1,4 +1,9 @@
-const initialState = { imgName: "home", loading: false, data: [] };
+const initialState = {
+  imgName: "home",
+  loading: false,
+  data: [],
+  selectedProduct: {},
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,6 +23,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         data: action.payload,
+      };
+    case "SELECTEDPRODUCT":
+      return {
+        ...state,
+        selectedProduct: action.payload,
       };
     default:
       return state;

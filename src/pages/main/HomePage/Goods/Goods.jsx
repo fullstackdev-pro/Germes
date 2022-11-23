@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { SlBasket, SlStar } from "react-icons/sl";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { AiOutlineCheck } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function Goods(props) {
   function delivery(id) {
@@ -14,11 +15,11 @@ function Goods(props) {
   const goodsArr = useSelector((state) => state.data);
   let goodsList = goodsArr.map((data, index) => {
     const { title, id, price, info, status } = data;
-    if (window.innerWidth<=320 && index>3) return ''
-    if (window.innerWidth<=480 && index>5) return ''
-    if (window.innerWidth<=768 && index>5) return ''
-    if (window.innerWidth<=1000 && index>7) return ''
-    if (window.innerWidth>1000 && index>9) return ''
+    if (window.innerWidth <= 320 && index > 3) return "";
+    if (window.innerWidth <= 480 && index > 5) return "";
+    if (window.innerWidth <= 768 && index > 5) return "";
+    if (window.innerWidth <= 1000 && index > 7) return "";
+    if (window.innerWidth > 1000 && index > 9) return "";
     return (
       <div
         key={id}
@@ -38,15 +39,21 @@ function Goods(props) {
         >
           {status}
         </div>
+
         <img
           src={require("../../../../img/goods/1.png")}
           className="p-4 md:mt-[30px] md:mx-[40px]"
           alt="goods"
         />
-        <p className="text-[12px] font-medium px-2 md:text-[16px]">{title}</p>
+
+        <div className="text-[12px] font-medium mx-2 md:text-[16px]">
+          <Link to={`/product/${id}`}>{title}</Link>
+        </div>
+
         <p className="hidden md:grid md:text-[14px] md:font-light md:px-2 md:mt-[8px]">
           {info}
         </p>
+
         <div className="md:flex md:justify-between md:mt-[10px]">
           <button
             onClick={() => {
@@ -60,6 +67,7 @@ function Goods(props) {
             в наличии
           </button>
         </div>
+        
         <div className="flex justify-between">
           <div className={`px-2 mt-[7px] md:mt-[11px]`}>
             <span
