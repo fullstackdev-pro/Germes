@@ -3,7 +3,7 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 function ShowRoom(props) {
   return (
-    <div className="mt-[36px] px-[20px] md:px-[16px] xxl:ml-[232px] xxl:mr-[266px] ">
+    <div className="mt-[36px] px-[20px] md:px-[16px] xxl:ml-[232px] xxl:mr-[266px] lg:mx-[20px]">
       <div className="lg:flex lg:justify-between">
         <p className="text-center text-[18px] font-medium md:text-left md:text-[20px] md:ml-4 lg:text-[26px] xl:text-[36px]">
           Наш шоурум

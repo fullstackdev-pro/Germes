@@ -12,8 +12,7 @@ import {
   // AiOutlineCheck,
 } from "react-icons/ai";
 import { BsTruck } from "react-icons/bs";
-import ShowRoom from "../../HomePage/Info/ShowRoom";
-import PartnerCarousel from "../../HomePage/Info/PartnerCarousel";
+
 // import { SlBasket, SlStar } from "react-icons/sl";
 
 function ProductDetails(props) {
@@ -58,110 +57,10 @@ function ProductDetails(props) {
     color,
   } = data;
 
-  // useEffect(() => {
-  //   if (category !== undefined) {
-  //     setProductCategory(category);
-  //   }
-  // }, [allData]);
-
-  // let recomended = allData.map((data, index) => {
-  //   const { title, id, price, info, status, category } = data;
-  //   if (window.innerWidth <= 320 && index > 3) return "";
-  //   if (window.innerWidth <= 480 && index > 5) return "";
-  //   if (window.innerWidth <= 768 && index > 5) return "";
-  //   if (window.innerWidth <= 1000 && index > 7) return "";
-  //   if (window.innerWidth > 1000 && index > 9) return "";
-  //   console.log(category);
-  //   return (
-  //     <div
-  //       key={id}
-  //       className="border-none md:border-solid md:border-[1px] md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative"
-  //     >
-  //       <SlStar className="hidden md:block md:absolute w-6 h-6 right-3 mt-1 text-[#5661CB]" />
-  //       <div
-  //         className={`hidden md:block md:absolute text-[12px] text-white rounded-r ${
-  //           status === "Лидер продаж"
-  //             ? "bg-[#F2994A] py-[4px] px-[12px] "
-  //             : status === "Лучшая цена"
-  //             ? "bg-[#DD4747] py-[4px] px-[12px] "
-  //             : status === "Привезем сегодня"
-  //             ? "bg-[#27AE60E5] py-[4px] px-[12px] "
-  //             : ""
-  //         }`}
-  //       >
-  //         {status}
-  //       </div>
-
-  //       <img
-  //         src={require("../../../../img/goods/1.png")}
-  //         className="p-4 md:mt-[30px] md:mx-[40px]"
-  //         alt="goods"
-  //       />
-
-  //       <div className="text-[12px] font-medium mx-2 md:text-[16px]">
-  //         <Link to={`/product/${id}`}>{title}</Link>
-  //       </div>
-
-  //       <p className="hidden md:grid md:text-[14px] md:font-light md:px-2 md:mt-[8px]">
-  //         {info}
-  //       </p>
-
-  //       <div className="md:flex md:justify-between md:mt-[10px]">
-  //         <button
-  //           onClick={() => {
-  //             // delivery(id);
-  //           }}
-  //           className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
-  //         >
-  //           бесплатная доставка
-  //         </button>
-  //         <button className="hidden underline underline-offset-1 md:grid md:text-[#219653] md:font-light md:text-[12px] md:pr-1 cursor-pointer">
-  //           в наличии
-  //         </button>
-  //       </div>
-
-  //       <div className="flex justify-between">
-  //         <div className={`px-2 mt-[7px] md:mt-[11px]`}>
-  //           <span
-  //             className={`font-medium text-[14px] md:text-[18px] ${
-  //               status === "Лучшая цена" ? "text-red-600" : ""
-  //             }`}
-  //           >
-  //             {price}
-  //           </span>
-  //           {" \u20BD "} / шт
-  //         </div>
-  //         <div
-  //           className={`hidden md:flex px-2 mt-[9px] md:mt-[11px] text-[12px] md:text-[18px] ${
-  //             status === "Лучшая цена" ? "line-through" : "hidden"
-  //           }`}
-  //         >
-  //           <span className="font-medium">{price + 200}</span>
-  //           {" \u20BD "} / шт
-  //         </div>
-  //       </div>
-  //       <div className="flex">
-  //         <button
-  //           onClick={() => {
-  //             // buy(id);
-  //           }}
-  //           className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]"
-  //         >
-  //           Купить в 1 клик
-  //         </button>
-  //         <button className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer">
-  //           <SlBasket className="" />
-  //           <AiOutlineCheck className="hidden " />
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // });
-
   return (
     <div
       key={id}
-      className="border-none mt-[25px] md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative"
+      className="border-none mt-[25px] md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative xxl:ml-[232px] xxl:mr-[266px] lg:ml-[20px]"
     >
       <p className="text-[16px] font-medium md:text-[16px] mx-[20px]">
         {title}
@@ -426,12 +325,16 @@ function ProductDetails(props) {
             теплопроводность, влагостойкостью. продольное и поперечное.
           </p>
           <hr className="hidden lg:block mt-[8px]" />
-          <h3 className="text-[14px] font-medium ml-6 lg:ml-0 lg:mt-[7px]">ОПЛАТА</h3>
+          <h3 className="text-[14px] font-medium ml-6 lg:ml-0 lg:mt-[7px]">
+            ОПЛАТА
+          </h3>
           <p className="mt-[7px] text-[14px] ml-6 lg:ml-0">
             Мы принимаем наличные, банковские карты и безналичные расчеты.
           </p>
           <hr className="hidden lg:block mt-[8px]" />
-          <h3 className="mt-[16px] text-[14px] font-medium ml-6 lg:ml-0">ДОСТАВКА</h3>
+          <h3 className="mt-[16px] text-[14px] font-medium ml-6 lg:ml-0">
+            ДОСТАВКА
+          </h3>
           <p className="mt-[8px] text-[14px] ml-6 lg:ml-0 lg:mr-32">
             Срок доставки: от 2 до 20 часов с момента подтверждения заказа
           </p>
@@ -449,9 +352,6 @@ function ProductDetails(props) {
         <h3 className="text-[20px] font-medium">Рекомендованные товары</h3>
         <div className="grid grid-col-2">{recomended}</div>
       </div> */}
-
-      <ShowRoom />
-      <PartnerCarousel />
     </div>
   );
 }

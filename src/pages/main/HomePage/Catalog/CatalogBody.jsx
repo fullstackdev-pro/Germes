@@ -1,108 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import rightarrow from "./images/rigtarrow.png";
 import { SlBasket } from "react-icons/sl";
 import { AiOutlinePercentage } from "react-icons/ai";
 import { BsTruck, BsCalendarDate } from "react-icons/bs";
 import { BiRuble } from "react-icons/bi";
+import axios from "axios";
 
 function CatalogBody(props) {
-  // let data = [
-  //   {
-  //     "title": "Кирпич облицовочный M95",
-  //     "price": 4500,
-  //     "info": "Кол-во на поддоне, шт. - 297 Формат одинарный",
-  //   },
-  // ];
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://localhost:3001/categories",
+    }).then(function (response) {
+      setCategory(response.data);
+    });
+  }, []);
 
-  // function GetData() {
-  //   data = useSelector((state) => state.data);
-  // }
-  // const [number, setNumber] = useState(0);
-  // const { title, id, price, info, status } = data[number];
-  // console.log(data[0])
-  // if (!data.length > 1) {
-  //   GetData()
-  // }else {
-    // let number = Math.trunc(Math.random() * 10) * 2;
-    // setNumber(number);
-  // }
+  let categories = category.map((catalogName) => {
+    return (
+      <Link
+        to={`/catalog/${catalogName}`}
+        className="flex justify-between mt-2 cursor-pointer"
+      >
+        <p
+          className={
+            catalogName === "Распродажа товаров"
+              ? "text-[14px] text-red-600"
+              : "text-[14px]"
+          }
+        >
+          {catalogName}
+        </p>
+        <img
+          src={rightarrow}
+          alt="arrow "
+          className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
+        />
+      </Link>
+    );
+  });
+
   return (
     <section>
       <div className="lg:flex lg:justify-between lg:mx-[20px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
         <div className="hidden lg:grid lg:pl-[11px] ml-[9px] lg:w-[28%] shadow lg:py-4">
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Стеновые материалы</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Фасадные материалы</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Строительные блоки</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Отделочные материалы</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Сухие смеси</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Благоустройство</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Лако-красочные материалы</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between mt-2 cursor-pointer">
-            <p className="text-[14px]">Прочие услуги</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
-          <div className="flex justify-between my-2 cursor-pointer">
-            <p className="text-[14px] text-red-700">Распродажа товаров</p>
-            <img
-              src={rightarrow}
-              alt="arrow "
-              className="w-[6px] h-[11px] mt-[7px] mr-[10px]"
-            />
-          </div>
+          <div className="">{categories}</div>
         </div>
         <div
           className="bg-catalogbodyxs sm:bg-catalogbodysm md:bg-catalogbodymd xl:bg-catalogbodylg
@@ -140,7 +84,9 @@ function CatalogBody(props) {
             <p className="pt-[31px] text-[22px]">
               Кирпич облицовочный M95 <br /> Воткинский
             </p>
-            <p className="text-[14px] font-light pt-[10px]">Кол-во на поддоне, шт. - 297</p>
+            <p className="text-[14px] font-light pt-[10px]">
+              Кол-во на поддоне, шт. - 297
+            </p>
             <p className="text-[14px] font-light pt-[3px]">Формат одинарный</p>
             <div className="text-[14px] font-light pt-[10px] ">
               <Link

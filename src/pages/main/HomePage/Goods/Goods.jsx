@@ -117,7 +117,7 @@ function Goods(props) {
           <HiOutlineArrowNarrowRight className="mt-1 ml-2" />
         </p>
       </div>
-      <div className="px-[12px] mt-[22px] grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="px-[12px] mt-[22px] grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:ml-[20px] lg:mr-[10px] xxl:ml-[232px] xxl:mr-[266px]">
         {goodsList}
       </div>
     </Fragment>

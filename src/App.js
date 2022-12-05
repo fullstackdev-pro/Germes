@@ -5,14 +5,17 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import FooterPage from "./pages/footer/FooterPage";
 import HeaderPage from "./pages/header/HeaderPage";
-import Product from "./pages/main/CatalogPage/Product";
+import Product from "./pages/main/ProductPage/Product";
 import HomePage from "./pages/main/HomePage/HomePage";
 import { dataFetched, dataFetching } from "./redux/actions";
+import Category from "./pages/main/CategoryPage/Category";
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 // import ProductDetails from './pages/main/CatalogPage/ProductDetails';
+// import Catalog from './pages/main/CatalogPage/Catalog';
+// import Category from './pages/main/CategoryPage/Category';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -59,6 +62,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:productId" element={<Product />} />
+        <Route path="/catalog/:catalogName" element={<Category />} />
       </Routes>
       <FooterPage />
     </section>
