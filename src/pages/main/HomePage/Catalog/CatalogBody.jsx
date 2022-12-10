@@ -12,15 +12,16 @@ function CatalogBody(props) {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:3001/categories",
+      url: "https://germesbackend.onrender.com/home/categories",
     }).then(function (response) {
       setCategory(response.data);
     });
   }, []);
 
-  let categories = category.map((catalogName) => {
+  let categories = category.map((catalogName, index) => {
     return (
       <Link
+        key={index}
         to={`/catalog/${catalogName}`}
         className="flex justify-between mt-2 cursor-pointer"
       >
@@ -90,7 +91,7 @@ function CatalogBody(props) {
             <p className="text-[14px] font-light pt-[3px]">Формат одинарный</p>
             <div className="text-[14px] font-light pt-[10px] ">
               <Link
-                to="/"
+                to="/delivery"
                 className="underline underline-offset-1 cursor-pointer"
               >
                 бесплатная доставка
@@ -107,12 +108,12 @@ function CatalogBody(props) {
               {"\u20BD "} / шт
             </p>
             <div className="flex justify-start pb-[53px] pt-[18px]">
-              <button className="bg-white text-black text-[14px] py-[8px] px-[19px] rounded">
+              <Link to="/" className="bg-white text-black text-[14px] py-[8px] px-[19px] rounded">
                 Купить в 1 клик
-              </button>
-              <button className="border-white border-[1px] px-[17px] ml-2 rounded">
-                <SlBasket />
-              </button>
+              </Link>
+              <Link to="/" className="border-white border-[1px] px-[17px] ml-2 rounded">
+                <SlBasket className="mt-2"/>
+              </Link>
             </div>
           </div>
         </div>

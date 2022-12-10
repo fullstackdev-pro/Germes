@@ -3,8 +3,8 @@ import Goods from "./Goods/Goods";
 import CatalogHeader from './Catalog/CatalogHeader';
 import CatalogBody from './Catalog/CatalogBody';
 import ShowRoom from "./Info/ShowRoom";
-import AdditionService from "./Info/AdditionService";
 import PartnerCarousel from "./Info/PartnerCarousel";
+import Services from "../ServicePage/Services";
 
 function HomePage(props) {
   return (
@@ -12,7 +12,9 @@ function HomePage(props) {
       <CatalogHeader/>
       <CatalogBody />
       <Goods/>
-      <AdditionService/>
+      <div className="hidden md:block">
+        <Services/>
+      </div>
       <ShowRoom/>
       <PartnerCarousel/>
     </section>

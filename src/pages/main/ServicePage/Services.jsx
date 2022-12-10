@@ -3,11 +3,11 @@ import { BsTruck, BsBricks } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineToday } from "react-icons/md";
 
-function AdditionService(props) {
+function Services(props) {
   return (
-    <section className="hidden md:block mt-[45px] px-[20px] lg:mx-[10px] xxl:ml-[232px] xxl:mr-[266px]">
+    <section className="mt-[45px] px-[20px] lg:mx-[10px] xxl:ml-[232px] xxl:mr-[266px]">
       <h2 className="text-[20px] font-medium">Дополнительные услуги</h2>
-      <div className="mt-[22px] gap-4 grid grid-cols-3 xl:grid-cols-4">
+      <div className="mt-[22px] gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-8">
         <div className="text-center shadow-md rounded-xl hover:bg-[#5661CB] hover:text-white lg:text-left cursor-pointer">
           <BsTruck className="p-2 m-1 mt-[21px] mx-auto w-[25%] h-[25%] rounded-full bg-[#9FA6EE1A] lg:ml-[38px] lg:w-[18%] lg:h-[27%]" />
           <p className="text-[15px] font-bold mt-[10px] lg:ml-[38px] ">
@@ -35,7 +35,7 @@ function AdditionService(props) {
             Демонстрация секретов успешного строительства
           </p>
         </div>
-        <div className="hidden xl:block text-center shadow-md rounded-xl hover:bg-[#5661CB] hover:text-white lg:text-left cursor-pointer">
+        <div className="text-center shadow-md rounded-xl hover:bg-[#5661CB] hover:text-white lg:text-left cursor-pointer">
           <MdOutlineToday className="p-2 m-1 mt-[21px] mx-auto w-[25%] h-[50px] rounded-full bg-[#9FA6EE1A] lg:ml-[38px] lg:w-[18%] lg:h-[27%]" />
           <p className="text-[15px] font-bold mt-[10px] lg:ml-[38px]">
             Сезонное хранение{" "}
@@ -49,4 +49,4 @@ function AdditionService(props) {
   );
 }
 
-export default AdditionService;
+export default Services;

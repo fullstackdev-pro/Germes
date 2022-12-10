@@ -6,6 +6,7 @@ import gphone from "./images/Vectorphone.png";
 import telegram from "./images/logos_telegram.png";
 import visa from "./images/Vectorvisa.png";
 import master from "./images/logos_mastercard.png";
+import { Link } from "react-router-dom";
 
 function FooterPage(props) {
   return (
@@ -51,25 +52,24 @@ function FooterPage(props) {
             <p className="mb-[22px] mt-[41px] text-[24px] font-medium">
               Организация
             </p>
-            <p>О компании</p>
-            <p>Услуги</p>
-            <p>Статьи</p>
-            <p>Вакансии</p>
+            <Link to="/">О компании</Link>
+            <br />
+            <Link to="/services">Услуги</Link> <br />
+            <Link to="/">Вакансии</Link>
           </div>
           <div>
             <p className="mb-[22px] mt-[41px] text-[24px] font-medium">
               Как купить
             </p>
-            <p>Доставка</p>
-            <p>Оплата</p>
-            <p>Проекты</p>
-            <p>Контакты</p>
+            <Link to="/delivery">Доставка</Link> <br />
+            <Link to="/psyCash">Оплата</Link> <br />
+            <Link to="/">Контакты</Link>
           </div>
           <div>
             <p className="mb-[22px] mt-[41px] text-[24px] font-medium">
               Мы на связи
             </p>
-            <p>8 (843) 203-93-43</p>
+            <p>+00(0000) 000-00-00</p>
             <p>info@td-germes.ru</p>
             <div className="flex">
               <img src={gphone} alt="phone" />

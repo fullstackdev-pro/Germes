@@ -9,7 +9,7 @@ import CategoryAds from "./CategoryAds";
 function CategoryDetails(props) {
   const { catalogName } = useParams();
   const data = useSelector((state) => state.data);
-
+  
   let goodsList = data.map((data, index) => {
     const { title, id, price, info, status, catalog } = data;
     if (catalog !== catalogName) return "";
@@ -50,9 +50,9 @@ function CategoryDetails(props) {
         </p>
 
         <div className="md:flex md:justify-between md:mt-[10px]">
-          <button className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] ">
+          <Link to="/delivery" className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] ">
             бесплатная доставка
-          </button>
+          </Link>
           <button className="hidden underline underline-offset-1 md:grid md:text-[#219653] md:font-light md:text-[12px] md:pr-1 cursor-pointer">
             в наличии
           </button>
@@ -91,10 +91,8 @@ function CategoryDetails(props) {
     );
   });
 
-  console.log(window.innerHeight);
-
   return (
-    <section className="lg:relative xxl:ml-[240px] xxl:mr-[245px] ml-7 pb-8">
+    <section className="lg:relative xxl:ml-[240px] xxl:mr-[245px] lg:ml-7 pb-8">
       <div className="hidden lg:block lg:absolute mt-[15px] w-[22%] shadow-lg bg-white rounded-md">
         <fieldset className="pl-4 m-4 mt-1">
           <legend className="text-[24px] font-medium">Производитель</legend>
@@ -195,8 +193,8 @@ function CategoryDetails(props) {
             </div>
             <div></div>
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {goodsList}
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:min-h-[28rem]">
+            {goodsList[0].type === undefined ? "Nothin found" : goodsList}
           </div>
         </div>
       </div>

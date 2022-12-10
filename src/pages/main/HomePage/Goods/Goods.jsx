@@ -1,26 +1,26 @@
-import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { SlBasket, SlStar } from "react-icons/sl";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { AiOutlineCheck } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { addToBacket } from "../../../../redux/actions";
 
 function Goods(props) {
-  function delivery(id) {
-    console.log(id);
+  const goodsArr = useSelector((state) => state.home);
+  const backet = useSelector((state) => state.backedItems);
+  const dispatch = useDispatch();
+  // console.log(goodsArr);
+
+  function toBacket(id, title, price, amount) {
+    dispatch(addToBacket({ id, title, price, amount }));
   }
-  function buy(id) {
-    console.log(id);
-  }
-  const goodsArr = useSelector((state) => state.data);
-  let goodsList = goodsArr.map((data, index) => {
+  // console.log(backet);
+
+  let goodsList = goodsArr.map((data) => {
+    if(data == null) return ''
     const { title, id, price, info, status } = data;
-    if (window.innerWidth <= 320 && index > 3) return "";
-    if (window.innerWidth <= 480 && index > 5) return "";
-    if (window.innerWidth <= 768 && index > 5) return "";
-    if (window.innerWidth <= 1000 && index > 7) return "";
-    if (window.innerWidth > 1000 && index > 9) return "";
-    return (
+    let action = (
       <div
         key={id}
         className="border-none md:border-solid md:border-[1px] md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative"
@@ -55,19 +55,17 @@ function Goods(props) {
         </p>
 
         <div className="md:flex md:justify-between md:mt-[10px]">
-          <button
-            onClick={() => {
-              delivery(id);
-            }}
+          <Link
+            to="/delivery"
             className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
           >
             бесплатная доставка
-          </button>
+          </Link>
           <button className="hidden underline underline-offset-1 md:grid md:text-[#219653] md:font-light md:text-[12px] md:pr-1 cursor-pointer">
             в наличии
           </button>
         </div>
-        
+
         <div className="flex justify-between">
           <div className={`px-2 mt-[7px] md:mt-[11px]`}>
             <span
@@ -89,21 +87,26 @@ function Goods(props) {
           </div>
         </div>
         <div className="flex">
-          <button
-            onClick={() => {
-              buy(id);
-            }}
-            className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]"
+          <Link
+            to={`/product/${id}`}
+            className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653] text-center"
           >
             Купить в 1 клик
-          </button>
-          <button className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer">
+          </Link>
+          <button
+            className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer"
+            onClick={() => {
+              toBacket(id, title, price, 1);
+            }}
+          >
             <SlBasket className="" />
             <AiOutlineCheck className="hidden " />
           </button>
         </div>
       </div>
     );
+
+    return action;
   });
 
   return (

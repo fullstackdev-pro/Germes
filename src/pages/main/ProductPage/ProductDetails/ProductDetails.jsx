@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { selectedProduct } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
@@ -18,14 +18,13 @@ import { BsTruck } from "react-icons/bs";
 function ProductDetails(props) {
   const { productId } = useParams();
   const [showAll, setShowAll] = useState(false);
-  // const [productCategory, setProductCategory] = useState("");
-
   const dispatch = useDispatch();
+
   const fetchProductDetail = async () => {
     const response = await axios
-      .get(`http://localhost:3001/goods/${productId}`)
+      .get(`http://localhost:5001/home/goods/${productId}`)
       .catch((e) => console.log("Error ", e.message));
-    dispatch(selectedProduct(response.data));
+    dispatch(selectedProduct(response.data[0]));
   };
 
   useEffect(() => {
@@ -38,7 +37,7 @@ function ProductDetails(props) {
   }, [productId]);
 
   const data = useSelector((state) => state.selectedProduct);
-  // const allData = useSelector((state) => state.data);
+  
   const {
     title,
     id,
@@ -140,6 +139,7 @@ function ProductDetails(props) {
                 <span className="text-[#7D7D7D] md:hidden">
                   Цена со склада:
                 </span>
+                <input type="radio" name="price" id="" className="mr-4 hidden md:inline"/>
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-16 md:pl-0 ${
                     status === "Лучшая цена" ? "text-red-600" : ""
@@ -156,6 +156,7 @@ function ProductDetails(props) {
                 <span className="text-[#7D7D7D] md:hidden">
                   Цена с доставкой:
                 </span>
+                <input type="radio" name="price" id="" className="mr-4 hidden md:inline"/>
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-12 md:pl-0 ${
                     status === "Лучшая цена" ? "text-red-600" : ""
@@ -209,10 +210,10 @@ function ProductDetails(props) {
               <AiOutlineCalculator className="text-[1.2rem] text-[#5661CB] ml-[1rem] mr-4" />{" "}
               Онлайн калькулятор
             </button>
-            <button className="flex mt-[13px] py-2 pl-1 border-[1px] border-[#5661CB] w-full rounded cursor-pointer ml-2">
+            <Link to="/delivery" className="flex mt-[13px] py-2 pl-1 border-[1px] border-[#5661CB] w-full rounded cursor-pointer ml-2">
               <BsTruck className="text-[1.2rem] text-[#5661CB] ml-[1rem] mr-4" />{" "}
               Расчет доставки
-            </button>
+            </Link>
           </div>
         </div>
       </div>
