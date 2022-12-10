@@ -79,9 +79,9 @@ function CategoryDetails(props) {
           </div>
         </div>
         <div className="flex">
-          <button className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]">
+          <Link to={`/product/${id}`} className="mx-2 py-[8px] mt-[10px] w-[95%] text-center bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]">
             Купить в 1 клик
-          </button>
+          </Link>
           <button className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer">
             <SlBasket className="" />
             <AiOutlineCheck className="hidden " />
