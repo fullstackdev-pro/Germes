@@ -22,7 +22,7 @@ function ProductDetails(props) {
 
   const fetchProductDetail = async () => {
     const response = await axios
-      .get(`http://localhost:5001/home/goods/${productId}`)
+      .get(`https://germesbackend.onrender.com/home/goods/${productId}`)
       .catch((e) => console.log("Error ", e.message));
     dispatch(selectedProduct(response.data[0]));
   };
