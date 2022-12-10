@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://germesbackend.onrender.com/home/goods",
+      url: `${process.env.REACT_APP_API_KEY}/home/goods`,
     })
       .then(function (response) {
         dispatch(dataFetched(response.data));
@@ -62,7 +62,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`https://germesbackend.onrender.com/home`)
+      .get(`${process.env.REACT_APP_API_KEY}/home`)
       .then(function (response) {
         dispatch(homeFetched(response.data));
       })

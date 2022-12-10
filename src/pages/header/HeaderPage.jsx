@@ -7,13 +7,13 @@ import card from "./images/Card.png";
 import phone from "./images/Group 70.png";
 import vector from "./images/Vector.png";
 import close from "./images/symbol-+.png";
-import Searchb from "../main/HomePage/Catalog/images/Searchb.png";
 
 function HeaderPage(props) {
   const [menu, setMenu] = useState(false);
+  const [backet, setBacket] = useState(false);
 
   return (
-    <section className="sticky top-0 w-full bg-white z-[9999]">
+    <section className="sticky top-0 h-full w-full bg-white z-[9999]">
       <div className="lg:hidden block ">
         <div className="flex justify-between pt-[14px] ml-5 mr-3">
           <Link to="/" className="w-[50%]">
@@ -23,12 +23,26 @@ function HeaderPage(props) {
             <p className="w-[13rem] text-[20px] hidden md:flex">
               8 (843) 203-93-43
             </p>
-            <img src={phone} alt="phone" className="md:hidden p-2 cursor-pointer" />
             <img
-              src={card}
-              alt="card"
-              className="p-2 mx-2 cursor-pointer md:hidden"
+              src={phone}
+              alt="phone"
+              className="md:hidden p-2 cursor-pointer"
             />
+            <div
+              className="relative"
+              onClick={() => {
+                setBacket((prew) => !prew);
+              }}
+            >
+              <span className="absolute right-1.5 text-[#5661CB] text-[12px]">
+                120
+              </span>
+              <img
+                src={card}
+                alt="card"
+                className="mx-4 mt-3 cursor-pointer lg:hidden"
+              />
+            </div>
             <img
               src={menu ? close : vector}
               alt="Vector"
@@ -41,20 +55,8 @@ function HeaderPage(props) {
             <div
               className={`${
                 menu ? "block" : "hidden"
-              } top-14 p-[20px] right-1 rounded absolute z-2 bg-white w-[100vw] h-[100vh]`}
+              } top-14 p-[20px] right-1 rounded absolute z-5 bg-white w-[100vw] h-[100vh] overflow-y-auto`}
             >
-              <div className="relative flex">
-                <input
-                  type="text"
-                  placeholder="Введите название товара"
-                  className="w-full h-[40px] border-[1px] rounded pl-16 text-[14px]"
-                />
-                <img
-                  src={Searchb}
-                  alt="Search"
-                  className="absolute left-4 top-[0.7rem]"
-                />
-              </div>
               <Link
                 to="/"
                 className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[20px]"
@@ -110,6 +112,46 @@ function HeaderPage(props) {
               <p className="border-[#5661CB] border-[1px] mt-[20px] text-[#5661CB] text-[16px] text-center w-full rounded py-2 ">
                 Оптовым клиентам
               </p>
+            </div>
+
+            <div
+              className={`${
+                backet ? "block" : "hidden"
+              } top-14 p-[20px] right-1 rounded absolute z-5 bg-white w-[100vw] min-h-full overflow-y-auto`}
+            >
+              backet<br />
+              backet
+              <br />
+              backet<br />
+              v<br />
+              vbackebrtbacket<br />
+              <br />
+              v<br />
+              backet<br />
+              sv<br />
+
+              sd<br /><br />
+              d
+              fdv
+              sf
+              dsf<br />v<br />
+              dsf<br />
+              dsf
+              ds<br />
+              fds
+              f
+              dsff<br /><br />
+              dsv<br />
+              fsd
+              fsd<br />
+              f
+              dsf<br /><br />
+              sdf
+              sd<br />
+              fsdfdsd<br />
+              falsedf<br />
+              sdf<br /><br />
+              s
             </div>
           </div>
         </div>

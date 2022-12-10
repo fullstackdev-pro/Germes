@@ -12,7 +12,7 @@ function CatalogHeader(props) {
   useEffect(() => {
     axios({
       method: "get",
-      url: "https://germesbackend.onrender.com/home/categories",
+      url: `${process.env.REACT_APP_API_KEY}/home/categories`,
     }).then(function (response) {
       setCategory(response.data);
     });

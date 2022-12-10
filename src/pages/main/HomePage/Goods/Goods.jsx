@@ -1,4 +1,4 @@
-import React, { Fragment} from "react";
+import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SlBasket, SlStar } from "react-icons/sl";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
@@ -8,16 +8,17 @@ import { addToBacket } from "../../../../redux/actions";
 
 function Goods(props) {
   const goodsArr = useSelector((state) => state.home);
+  const backet = useSelector((state) => state.backedItems);
   const dispatch = useDispatch();
-  // console.log(goodsArr);
 
   function toBacket(id, title, price, amount) {
-    dispatch(addToBacket({ id, title, price, amount }));
+    let result = backet.findIndex((items) => items.id === id)
+    if (result === -1) {
+      dispatch(addToBacket({ id, title, price, amount }));
+    }
   }
-  // console.log(backet);
-
   let goodsList = goodsArr.map((data) => {
-    if(data == null) return ''
+    if (data == null) return "";
     const { title, id, price, info, status } = data;
     let action = (
       <div
