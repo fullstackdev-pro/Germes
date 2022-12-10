@@ -8,7 +8,6 @@ import { addToBacket } from "../../../../redux/actions";
 
 function Goods(props) {
   const goodsArr = useSelector((state) => state.home);
-  const backet = useSelector((state) => state.backedItems);
   const dispatch = useDispatch();
   // console.log(goodsArr);
 
