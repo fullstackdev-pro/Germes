@@ -12,6 +12,7 @@ import Category from "./pages/main/CategoryPage/Category";
 import Services from "./pages/main/ServicePage/Services";
 import DeliveryPage from "./pages/main/DeliveryPage/DeliveryPage";
 import PayCash from "./pages/main/PayPage/PayCash";
+import BacketPage from "./pages/main/BacketPage/BacketPage";
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -77,6 +78,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/payCash" element={<PayCash />} />
+        <Route path="/backet" element={<BacketPage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/delivery" element={<DeliveryPage />} />
         <Route path="/product/:productId" element={<Product />} />

@@ -30,3 +30,13 @@ export const addToBacket = (data) => ({
   type: "ADDTOBACKET",
   payload: data,
 });
+
+export const deleteToBacked = (data) => ({
+  type: "DELETETOBACKET",
+  payload: data,
+});
+
+export const changeAmount = (amount, index) => ({
+  type: "CHANGEAMOUNT",
+  payload: {amount, index},
+});

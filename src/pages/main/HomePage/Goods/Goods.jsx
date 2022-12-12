@@ -11,15 +11,16 @@ function Goods(props) {
   const backet = useSelector((state) => state.backedItems);
   const dispatch = useDispatch();
 
-  function toBacket(id, title, price, amount) {
+  function toBacket(id, title, price, amount, remainder) {
     let result = backet.findIndex((items) => items.id === id)
     if (result === -1) {
-      dispatch(addToBacket({ id, title, price, amount }));
+      dispatch(addToBacket({ id, title, price, amount, remainder}));
     }
   }
+
   let goodsList = goodsArr.map((data) => {
     if (data == null) return "";
-    const { title, id, price, info, status } = data;
+      const { title, id, price, info, status, remainder } = data;
     let action = (
       <div
         key={id}
@@ -96,7 +97,7 @@ function Goods(props) {
           <button
             className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer"
             onClick={() => {
-              toBacket(id, title, price, 1);
+              toBacket(id, title, price, 1, remainder);
             }}
           >
             <SlBasket className="" />

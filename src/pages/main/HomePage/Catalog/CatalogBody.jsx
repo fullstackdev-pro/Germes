@@ -51,7 +51,7 @@ function CatalogBody(props) {
         </div>
         <div
           className="bg-catalogbodyxs sm:bg-catalogbodysm md:bg-catalogbodymd xl:bg-catalogbodylg
-          w-[96%] h-full bg-cover bg-no-repeat ml-[7px] mt-[10px] rounded-md md:w-[98%] xl:flex xl:justify-end"
+          w-[96%] h-full bg-cover bg-no-repeat ml-[7px] mt-[10px] rounded-md md:w-[98%] xl:flex xl:justify-end z-1"
         >
           <div
             className={`rounded-md md:pl-[40px] ${

@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
         data: action.payload,
       };
 
-      case "HOMEFETCHING":
+    case "HOMEFETCHING":
       return {
         ...state,
         loading: true,
@@ -52,7 +52,26 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         backedItems: [...state.backedItems, action.payload],
-      }
+      };
+
+    case "DELETETOBACKET":
+      return {
+        ...state,
+        backedItems: [
+          ...state.backedItems.filter((item) => item.id !== action.payload),
+        ],
+      };
+    case "CHANGEAMOUNT":
+      return {
+        ...state,
+        backedItems: [...state.backedItems].map((item, index) => {
+          if (index === action.payload.index) {
+            item.amount = action.payload.amount
+            return item
+          }
+          return item;
+        }),
+      };
     default:
       return state;
   }

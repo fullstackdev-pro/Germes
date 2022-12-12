@@ -7,15 +7,16 @@ import card from "./images/Card.png";
 import phone from "./images/Group 70.png";
 import vector from "./images/Vector.png";
 import close from "./images/symbol-+.png";
+import { useSelector } from "react-redux";
 
 function HeaderPage(props) {
   const [menu, setMenu] = useState(false);
-  const [backet, setBacket] = useState(false);
+  let backedItems = useSelector((state) => state.backedItems);
 
   return (
-    <section className="sticky top-0 h-full w-full bg-white z-[9999]">
+    <section className="h-full w-full bg-white overflow-x-hidden mb-16">
       <div className="lg:hidden block ">
-        <div className="flex justify-between pt-[14px] ml-5 mr-3">
+        <div className="flex justify-between pt-[14px] pl-3 mr-3 fixed bg-white w-full">
           <Link to="/" className="w-[50%]">
             <img src={logo} alt="logo" />
           </Link>
@@ -28,21 +29,16 @@ function HeaderPage(props) {
               alt="phone"
               className="md:hidden p-2 cursor-pointer"
             />
-            <div
-              className="relative"
-              onClick={() => {
-                setBacket((prew) => !prew);
-              }}
-            >
+            <Link to="/backet" className="relative">
               <span className="absolute right-1.5 text-[#5661CB] text-[12px]">
-                120
+                {backedItems.length}
               </span>
               <img
                 src={card}
                 alt="card"
                 className="mx-4 mt-3 cursor-pointer lg:hidden"
               />
-            </div>
+            </Link>
             <img
               src={menu ? close : vector}
               alt="Vector"
@@ -55,7 +51,7 @@ function HeaderPage(props) {
             <div
               className={`${
                 menu ? "block" : "hidden"
-              } top-14 p-[20px] right-1 rounded absolute z-5 bg-white w-[100vw] h-[100vh] overflow-y-auto`}
+              } p-[20px] right-1 rounded absolute z-[500] bg-white w-[100vw] h-[100vh] overflow-y-auto`}
             >
               <Link
                 to="/"
@@ -113,51 +109,12 @@ function HeaderPage(props) {
                 Оптовым клиентам
               </p>
             </div>
-
-            <div
-              className={`${
-                backet ? "block" : "hidden"
-              } top-14 p-[20px] right-1 rounded absolute z-5 bg-white w-[100vw] min-h-full overflow-y-auto`}
-            >
-              backet<br />
-              backet
-              <br />
-              backet<br />
-              v<br />
-              vbackebrtbacket<br />
-              <br />
-              v<br />
-              backet<br />
-              sv<br />
-
-              sd<br /><br />
-              d
-              fdv
-              sf
-              dsf<br />v<br />
-              dsf<br />
-              dsf
-              ds<br />
-              fds
-              f
-              dsff<br /><br />
-              dsv<br />
-              fsd
-              fsd<br />
-              f
-              dsf<br /><br />
-              sdf
-              sd<br />
-              fsdfdsd<br />
-              falsedf<br />
-              sdf<br /><br />
-              s
-            </div>
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex xxl:ml-[232px] xxl:mr-[248px] border-b-[1px] pb-3">
-        <div className="flex justify-between mt-[14px] mx-[22px] w-full">
+
+      <div className="hidden lg:flex xxl:ml-[232px] xxl:mr-[248px] border-b-[1px] py-3">
+        <div className="flex justify-between px-[22px] pt-2 w-full top-0 fixed bg-white z-[100]">
           <Link to="/">
             <img src={logo} alt="logo" className="xl:hidden" />
             <img src={logo1440} alt="logo" className="lg:hidden xl:flex" />
@@ -194,11 +151,12 @@ function HeaderPage(props) {
               alt="star"
               className="mx-2 xl:mx-6 cursor-pointer"
             />
-            <img
-              src={card}
-              alt="card"
-              className="mx-2 ml-4 xl:ml-6 cursor-pointer"
-            />
+            <Link to="/backet" className="relative cursor-pointer">
+              <span className="absolute right-1.5 text-[#5661CB] text-[12px]">
+                {backedItems.length}
+              </span>
+              <img src={card} alt="card" className="p-1 mx-2 ml-4 xl:ml-6" />
+            </Link>
           </div>
           <div className="">
             <p className="w-[10.5rem] text-[20px] xl:text-[24px] xl:w-[13rem]">
