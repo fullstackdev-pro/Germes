@@ -12,7 +12,6 @@ import {
   dataFetched,
   dataFetching,
   homeFetched,
-  loadingEnd,
 } from "./redux/actions";
 import Category from "./pages/main/CategoryPage/Category";
 import Services from "./pages/main/ServicePage/Services";
