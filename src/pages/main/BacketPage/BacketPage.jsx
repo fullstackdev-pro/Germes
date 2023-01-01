@@ -25,29 +25,29 @@ function BacketPage(props) {
         >
           <div className="w-screen px-4 mt-8 md:flex md:justify-between">
             <div className="flex">
-              <div className="p-2 md:p-0">
+              <div className="p-2 md:p-0 max-h-[4rem] max-w-[4rem] xl:max-h-[5rem] xl:max-w-[5rem]">
                 <img src={photo} alt="goods" />
               </div>
-              <p className="text-[18px] md:w-[60%] lg:text-[24px]">{title}</p>
+              <p className="text-[18px] md:w-[60%] lg:text-[24px] xl:text-[28px]">{title}</p>
             </div>
-            <div className="lg:w-[30%] lg:mr-8 md:w-[50%]">
-              <div className="flex justify-between text-[15px] mt-4 md:mt-0 lg:text-[20px]">
+            <div className="lg:w-[35%] lg:mr-8 md:w-[50%]">
+              <div className="flex justify-between text-[15px] mt-4 md:mt-0 lg:text-[20px] xl:text-[24px]">
                 <p>в скальде: {remainder - amount} шт</p>
                 <p>покупается: {amount} шт</p>
               </div>
-              <div className="flex justify-between text-[15px] lg:text-[20px]">
+              <div className="flex justify-between text-[15px] lg:text-[20px] xl:text-[24px]">
                 <p>Стоимость: {salePrice}</p>
                 <p>общий: {salePrice * amount}</p>
               </div>
             </div>
-            <div className="flex justify-between mt-4 md:mt-0 md:pb-12 md:grid ml-4 lg:text-[20px] lg:flex">
+            <div className="flex justify-between mt-4 md:mt-0 md:pb-12 md:grid ml-4 lg:text-[20px] lg:flex xl:text-[24px]">
               <input
                 type="number"
                 defaultValue={amount}
                 className="border-2 rounded p-1 text-center w-[80%]"
                 onChange={handleChange}
                 min="0"
-                name={index}
+                name={idCode}
               />
               <button
                 onClick={() => {

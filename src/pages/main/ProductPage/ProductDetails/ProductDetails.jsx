@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import {
-  addToBacket,
   dataFetching,
   loadingEnd,
   selectedProduct,
@@ -17,15 +16,16 @@ import {
   // AiOutlineCheck,
 } from "react-icons/ai";
 import { BsTruck } from "react-icons/bs";
+import { changeAmount } from "../../../../redux/actions";
 
 // import { SlBasket, SlStar } from "react-icons/sl";
 
 function ProductDetails(props) {
   const { productId } = useParams();
   const [showAll, setShowAll] = useState(false);
+  const [amounts, setAmounts] = useState(1);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
-  const backet = useSelector((state) => state.backedItems);
 
   const fetchProductDetail = async () => {
     dispatch(dataFetching());
@@ -45,13 +45,6 @@ function ProductDetails(props) {
     // eslint-disable-next-line
   }, [productId]);
 
-  function toBacket(title, remainder, amount, salePrice,  idCode,) {
-    let result = backet.findIndex((items) => items.idCode === idCode);
-    if (result === -1) {
-      dispatch(addToBacket({ title, remainder, amount, salePrice,  idCode, }));
-    }
-  }
-
   const data = useSelector((state) => state.selectedProduct);
   const {
     title,
@@ -69,9 +62,18 @@ function ProductDetails(props) {
     quantitypallet,
     quantitycar,
     color,
-    remainder,
-    idCode
+    idCode,
   } = data;
+
+  function toBacket(amount, idCode) {
+    console.log(amount, idCode);
+    changeAmount(amount, idCode);
+  }
+
+  function handleChange(e) {
+    let a = e.target.value;
+    setAmounts((prew) => (prew = a));
+  }
 
   if (loading) {
     return <div className="mt-16 text-center text-[2rem]">Loading...</div>;
@@ -159,18 +161,13 @@ function ProductDetails(props) {
                 <span className="text-[#7D7D7D] md:hidden">
                   Цена со склада:
                 </span>
-                <input
-                  type="radio"
-                  name="price"
-                  id=""
-                  className="mr-4 hidden md:inline"
-                />
+                <input type="radio" id="" className="mr-4 hidden md:inline" />
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-16 md:pl-0 ${
                     status === "Лучшая цена" ? "text-red-600" : ""
                   }`}
                 >
-                  {salePrice / 100}
+                  {salePrice}
                 </span>
                 {" \u20BD "} / шт
               </div>
@@ -193,7 +190,7 @@ function ProductDetails(props) {
                     status === "Лучшая цена" ? "text-red-600" : ""
                   }`}
                 >
-                  {salePrice / 100 + 8}
+                  {salePrice + 8 * 10}
                 </span>
                 {" \u20BD "} / шт
               </div>
@@ -206,19 +203,28 @@ function ProductDetails(props) {
               <input
                 className="w-[50%] mt-[10px] py-1 border-2 border-[#BDBDBD] rounded-md text-center text-black"
                 type="number"
-                placeholder="288"
+                placeholder="1"
+                onChange={handleChange}
+                min="0"
+                name={idCode}
               />
               <p className="text-[14px] mt-[10px] text-[#7D7D7D]">
                 Итого:{" "}
-                <span className="text-black">10,260.00 {" \u20BD "}</span>{" "}
+                <span className="text-black">
+                  {salePrice * amounts} {" \u20BD "}
+                </span>{" "}
               </p>
             </div>
           </div>
 
           <div className="mt-[24px] mx-[16px] text-center md:flex md:justify-start md:mb-[20px]">
             <div>
-              <button className="w-[63%] border-2 border-[#5661CB] p-2 rounded-md md:w-full md:px-[28px]"
-              onClick={() => {toBacket(title, remainder, 1, salePrice,  idCode)}}>
+              <button
+                className="w-[63%] border-2 border-[#5661CB] p-2 rounded-md md:w-full md:px-[28px]"
+                onClick={() => {
+                  toBacket(amounts, idCode);
+                }}
+              >
                 Добавить в корзину
               </button>
               <input

@@ -18,7 +18,7 @@ function HeaderPage(props) {
     <section className="h-full w-full bg-white overflow-x-hidden mb-[2.6rem]">
       <div className="lg:hidden block ">
         <div className="flex justify-between pt-[14px] pl-3 mr-3 fixed z-[5] bg-white w-full">
-          <Link to="/" className="w-[50%]">
+          <Link to="/" className="w-[50%] mb-1">
             <img src={logo} alt="logo" />
           </Link>
           <div className="flex mt-[2px]">

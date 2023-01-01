@@ -73,8 +73,8 @@ const reducer = (state = initialState, action) => {
     case "CHANGEAMOUNT":
       return {
         ...state,
-        backedItems: [...state.backedItems].map((item, index) => {
-          if (index === action.payload.index) {
+        backedItems: [...state.backedItems].map((item) => {
+          if (item.idCode === action.payload.index) {
             item.amount = action.payload.amount
             return item
           }

@@ -12,10 +12,10 @@ function Goods(props) {
   const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
-  function toBacket(title, remainder, amount, salePrice,  idCode,) {
+  function toBacket(title, remainder, amount, salePrice, idCode) {
     let result = backet.findIndex((items) => items.idCode === idCode);
     if (result === -1) {
-      dispatch(addToBacket({ title, remainder, amount, salePrice,  idCode, }));
+      dispatch(addToBacket({ title, remainder, amount, salePrice, idCode }));
     }
   }
 
@@ -97,6 +97,9 @@ function Goods(props) {
         <div className="flex">
           <Link
             to={`/product/${idCode}`}
+            onClick={() => {
+              toBacket(title, remainder, 1, salePrice, idCode);
+            }}
             className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653] text-center"
           >
             Купить в 1 клик
@@ -104,7 +107,7 @@ function Goods(props) {
           <button
             className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer"
             onClick={() => {
-              toBacket(title, remainder, 1, salePrice,  idCode);
+              toBacket(title, remainder, 1, salePrice, idCode);
             }}
           >
             <SlBasket className="" />
