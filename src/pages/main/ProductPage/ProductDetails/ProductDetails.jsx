@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { selectedProduct } from "../../../../redux/actions";
+import { dataFetching, loadingEnd, selectedProduct } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { FaTelegramPlane } from "react-icons/fa";
+// import { FaTelegramPlane } from "react-icons/fa";
 import {
   AiOutlineRight,
   AiOutlineLeft,
@@ -19,12 +19,15 @@ function ProductDetails(props) {
   const { productId } = useParams();
   const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading)
 
   const fetchProductDetail = async () => {
+    dispatch(dataFetching())
     const response = await axios
-      .get(`${process.env.REACT_APP_API_KEY}/home/goods/${productId}`)
+      .get(`${process.env.REACT_APP_API_KEY}/product/${productId}`)
       .catch((e) => console.log("Error ", e.message));
-    dispatch(selectedProduct(response.data[0]));
+    dispatch(loadingEnd());
+    dispatch(selectedProduct(response.data.item));
   };
 
   useEffect(() => {
@@ -37,11 +40,10 @@ function ProductDetails(props) {
   }, [productId]);
 
   const data = useSelector((state) => state.selectedProduct);
-  
   const {
     title,
-    id,
-    price,
+    _id,
+    salePrice,
     status,
     category,
     manufacturer,
@@ -56,10 +58,15 @@ function ProductDetails(props) {
     color,
   } = data;
 
+  if(loading) {
+    return(
+      <div>Loading...</div>
+    )
+  }
   return (
     <div
-      key={id}
-      className="border-none mt-[25px] md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative xxl:ml-[232px] xxl:mr-[266px] lg:ml-[20px]"
+      key={_id}
+      className="border-none pt-16 lg:pt-0 md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative xxl:ml-[232px] xxl:mr-[266px] lg:ml-[20px]"
     >
       <p className="text-[16px] font-medium md:text-[16px] mx-[20px]">
         {title}
@@ -145,7 +152,7 @@ function ProductDetails(props) {
                     status === "Лучшая цена" ? "text-red-600" : ""
                   }`}
                 >
-                  {price / 100}
+                  {salePrice / 100}
                 </span>
                 {" \u20BD "} / шт
               </div>
@@ -162,7 +169,7 @@ function ProductDetails(props) {
                     status === "Лучшая цена" ? "text-red-600" : ""
                   }`}
                 >
-                  {price / 100 + 8}
+                  {salePrice / 100 + 8}
                 </span>
                 {" \u20BD "} / шт
               </div>
@@ -300,7 +307,7 @@ function ProductDetails(props) {
             </li>
           </ul>
 
-          <div className="mx-[20px] md:mx-0 lg:hidden">
+          {/* <div className="mx-[20px] md:mx-0 lg:hidden">
             <button className="flex mt-[13px] py-2 pl-8 border-[1px] border-[#5661CB] w-full rounded cursor-pointer">
               <AiOutlineCalculator className="text-[1.2rem] text-[#5661CB] mt-[2.5px] ml-[1rem] mr-4" />{" "}
               Онлайн калькулятор
@@ -313,7 +320,7 @@ function ProductDetails(props) {
               <BsTruck className="text-[1.2rem] text-[#5661CB] mt-[2px] ml-[1rem] mr-4" />{" "}
               Расчет доставки
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="ml-4 mt-[21px] hidden md:block lg:w-[59%]">

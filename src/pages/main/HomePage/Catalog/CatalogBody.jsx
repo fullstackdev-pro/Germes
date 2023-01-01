@@ -6,33 +6,43 @@ import { AiOutlinePercentage } from "react-icons/ai";
 import { BsTruck, BsCalendarDate } from "react-icons/bs";
 import { BiRuble } from "react-icons/bi";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { dataFetching, loadingEnd } from "../../../../redux/actions";
 
 function CatalogBody(props) {
+  const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
   useEffect(() => {
+    dispatch(dataFetching());
     axios({
       method: "get",
       url: `${process.env.REACT_APP_API_KEY}/home/categories`,
     }).then(function (response) {
-      setCategory(response.data);
+      dispatch(loadingEnd());
+      setCategory(response.data.object);
     });
+    // eslint-disable-next-line
   }, []);
 
+  if (category.length <= 0) {
+    return <div></div>;
+  }
   let categories = category.map((catalogName, index) => {
+    const {name} = catalogName
     return (
       <Link
         key={index}
-        to={`/catalog/${catalogName}`}
+        to={`/catalog/${name}`}
         className="flex justify-between mt-2 cursor-pointer"
       >
         <p
           className={
-            catalogName === "Распродажа товаров"
+            name === "Распродажа товаров"
               ? "text-[14px] text-red-600"
               : "text-[14px]"
           }
         >
-          {catalogName}
+          {name}
         </p>
         <img
           src={rightarrow}
@@ -44,14 +54,14 @@ function CatalogBody(props) {
   });
 
   return (
-    <section>
+    <section className="pt-16 lg:pt-0">
       <div className="lg:flex lg:justify-between lg:mx-[20px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
         <div className="hidden lg:grid lg:pl-[11px] ml-[9px] lg:w-[28%] shadow lg:py-4">
           <div className="">{categories}</div>
         </div>
         <div
           className="bg-catalogbodyxs sm:bg-catalogbodysm md:bg-catalogbodymd xl:bg-catalogbodylg
-          w-[96%] h-full bg-cover bg-no-repeat ml-[7px] mt-[10px] rounded-md md:w-[98%] xl:flex xl:justify-end z-1"
+          w-[96%] h-full bg-cover bg-no-repeat ml-[7px] mt-[10px] rounded-md md:w-[98%] xl:flex xl:justify-end"
         >
           <div
             className={`rounded-md md:pl-[40px] ${
@@ -108,17 +118,24 @@ function CatalogBody(props) {
               {"\u20BD "} / шт
             </p>
             <div className="flex justify-start pb-[53px] pt-[18px]">
-              <Link to="/" className="bg-white text-black text-[14px] py-[8px] px-[19px] rounded">
+              <Link
+                to="/"
+                className="bg-white text-black text-[14px] py-[8px] px-[19px] rounded"
+              >
                 Купить в 1 клик
               </Link>
-              <Link to="/" className="border-white border-[1px] px-[17px] ml-2 rounded">
-                <SlBasket className="mt-2"/>
+              <Link
+                to="/"
+                className="border-white border-[1px] px-[17px] ml-2 rounded"
+              >
+                <SlBasket className="mt-2" />
               </Link>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-between text-[11px] ml-[9px] mt-[19px] sm:px-4 md:px-0 md:ml-8 lg:ml-12 lg:text-[14px] xl:mr-[2rem] xl:ml-[23rem] xxl:ml-[600px] xxl:mr-[280px]">
+
+      <div className="flex justify-between text-[11px] ml-[9px] mt-[19px] sm:px-4 md:px-0 md:ml-8 lg:ml-8 lg:mr-6 lg:text-[14px] xl:mr-[2rem] xl:ml-[23rem] xxl:ml-[600px] xxl:mr-[280px]">
         <div className="flex">
           <BsTruck className="bg-[#9FA6EE1A] text-[#5661CB] text-[2rem] p-[4px] rounded-md mr-[6px]" />{" "}
           Доставка товара и аренда спецтехники

@@ -5,25 +5,35 @@ import Searchb from "./images/Searchb.png";
 import rightarrow from "./images/rigtarrow.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { dataFetching, loadingEnd } from "../../../../redux/actions";
+import { useDispatch } from "react-redux";
 
 function CatalogHeader(props) {
+  const dispatch = useDispatch();
   const [catalog, setCatalog] = useState(false);
   const [category, setCategory] = useState([]);
   useEffect(() => {
+    dispatch(dataFetching());
     axios({
       method: "get",
       url: `${process.env.REACT_APP_API_KEY}/home/categories`,
     }).then(function (response) {
-      setCategory(response.data);
+      dispatch(loadingEnd());
+      setCategory(response.data.object);
     });
+    // eslint-disable-next-line
   }, []);
 
+  if (category.length <= 0) {
+    return <div></div>;
+  }
   let categories = category.map((catalogName, id) => {
+    const {name} = catalogName
     return (
       <Link
         key={id}
-        to={`/catalog/${catalogName}`}
-        className="flex justify-between mt-2 cursor-pointer"
+        to={`/catalog/${name}`}
+        className="flex justify-between mt-3 cursor-pointer"
         onClick={() => {
           setCatalog(false);
         }}
@@ -35,7 +45,7 @@ function CatalogHeader(props) {
               : "text-[14px]"
           }
         >
-          {catalogName}
+          {name}
         </p>
         <img
           src={rightarrow}
@@ -49,7 +59,7 @@ function CatalogHeader(props) {
   return (
     <section>
       {/* small */}
-      <div className="mx-[7px] mt-4 bg-[#5661CB] px-3 rounded-lg md:flex md:justify-between lg:hidden">
+      <div className="mt-5 bg-[#5661CB] px-3 rounded-lg md:flex md:justify-between lg:hidden fixed w-[96%] z-[5]">
         <div className="flex justify-between relative">
           <img
             src={Vector1}
@@ -72,8 +82,8 @@ function CatalogHeader(props) {
         </div>
         <div
           className={`${
-            catalog ? "block" : "hidden"
-          } top-30 p-[20px] right-1 rounded absolute z-10 bg-white w-[100vw] h-[100vh]`}
+            catalog ? "fixed" : "hidden"
+          } top-30 p-[20px] left-0 rounded bg-white w-[100vw] h-[100vh]`}
         >
           {categories}
         </div>
@@ -106,7 +116,7 @@ function CatalogHeader(props) {
             </span>
           </div>
         </div>
-        <div className="flex justify-between ml-[30px] mr-[19px] w-full">
+        <div className="flex justify-between ml-[30px] mr-[19px] w-full pt-2">
           <p className="ml-4 text-[14px] font-medium text-[red] mt-[0.6rem] cursor-pointer">
             АКЦИИ
           </p>

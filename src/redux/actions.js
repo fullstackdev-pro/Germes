@@ -40,3 +40,12 @@ export const changeAmount = (amount, index) => ({
   type: "CHANGEAMOUNT",
   payload: {amount, index},
 });
+
+export const loadingEnd = () => ({
+  type: "LOADINGEND",
+})
+
+export const categoryFetched = (data) => ({
+  type: "CATEGORYFETCHED",
+  payload: data
+});

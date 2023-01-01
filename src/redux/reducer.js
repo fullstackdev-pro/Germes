@@ -5,9 +5,11 @@ const initialState = {
   home: [],
   selectedProduct: {},
   backedItems: [],
+  category: []
 };
 
 const reducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case "HEADER_IMAGE_CATEGORY":
       return {
@@ -22,11 +24,18 @@ const reducer = (state = initialState, action) => {
         loading: true,
       };
 
+    case "LOADINGEND":
+      return {
+        ...state,
+        loading: false
+      }
+
     case "DATAFETCHED":
+      Object.assign(state.data, action.payload);
       return {
         ...state,
         loading: false,
-        data: action.payload,
+        data: Object.assign(state.data, action.payload),
       };
 
     case "HOMEFETCHING":
@@ -58,7 +67,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         backedItems: [
-          ...state.backedItems.filter((item) => item.id !== action.payload),
+          ...state.backedItems.filter((item) => item.idCode !== action.payload),
         ],
       };
     case "CHANGEAMOUNT":
@@ -72,6 +81,11 @@ const reducer = (state = initialState, action) => {
           return item;
         }),
       };
+    case "CATEGORYFETCHED":
+      return {
+        ...state,
+        category: action.payload
+      }
     default:
       return state;
   }

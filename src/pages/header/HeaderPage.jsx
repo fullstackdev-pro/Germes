@@ -8,15 +8,16 @@ import phone from "./images/Group 70.png";
 import vector from "./images/Vector.png";
 import close from "./images/symbol-+.png";
 import { useSelector } from "react-redux";
+import { RiAdminLine } from "react-icons/ri";
 
 function HeaderPage(props) {
   const [menu, setMenu] = useState(false);
   let backedItems = useSelector((state) => state.backedItems);
-
+  let isAdmin = JSON.parse(window.localStorage.getItem("userObject"));
   return (
-    <section className="h-full w-full bg-white overflow-x-hidden mb-16">
+    <section className="h-full w-full bg-white overflow-x-hidden mb-[2.6rem]">
       <div className="lg:hidden block ">
-        <div className="flex justify-between pt-[14px] pl-3 mr-3 fixed bg-white w-full">
+        <div className="flex justify-between pt-[14px] pl-3 mr-3 fixed z-[5] bg-white w-full">
           <Link to="/" className="w-[50%]">
             <img src={logo} alt="logo" />
           </Link>
@@ -24,6 +25,16 @@ function HeaderPage(props) {
             <p className="w-[13rem] text-[20px] hidden md:flex">
               8 (843) 203-93-43
             </p>
+            <Link
+              to="/adminPage/goods"
+              className={
+                isAdmin === "63b1b95ff9e6cd10eacfdcf7"
+                  ? "flex text-[1.4rem] text-[#5661CB] mt-[10px] ml-1 mr-4 cursor-pointer"
+                  : "hidden"
+              }
+            >
+              <RiAdminLine />
+            </Link>
             <img
               src={phone}
               alt="phone"
@@ -50,24 +61,42 @@ function HeaderPage(props) {
 
             <div
               className={`${
-                menu ? "block" : "hidden"
-              } p-[20px] right-1 rounded absolute z-[500] bg-white w-[100vw] h-[100vh] overflow-y-auto`}
+                menu ? "fixed" : "hidden"
+              } p-[20px] pt-0 left-0 top-[6rem] rounded absolute z-[500] bg-white w-[100vw] h-[100vh] overflow-y-auto`}
             >
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
+                to="/login"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
+              >
+                Login
+              </Link>
+              <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/"
-                className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[20px]"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
                 Акции
               </Link>{" "}
               <br />
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/services"
-                className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
                 Услуги
               </Link>{" "}
               <br />
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/delivery"
                 className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
@@ -75,29 +104,41 @@ function HeaderPage(props) {
               </Link>{" "}
               <br />
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/"
-                className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
                 Оплата
               </Link>{" "}
               <br />
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/"
-                className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
                 Проекты
               </Link>{" "}
               <br />
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/"
-                className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
                 О компании
               </Link>{" "}
               <br />
               <Link
+                onClick={() => {
+                  setMenu((prew) => !prew);
+                }}
                 to="/"
-                className="inline-block py-2 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
+                className="inline-block py-1 font-normal cursor-pointer hover:bg-slate-100 w-full rounded mt-[13px]"
               >
                 Контакты
               </Link>{" "}
@@ -146,6 +187,16 @@ function HeaderPage(props) {
             </p>
           </div>
           <div className="flex justify-between h-5 mt-[0.88rem] xl:h-6 xl:mt-[0.9rem]">
+            <Link
+              to="/adminPage/goods"
+              className={
+                isAdmin === "63b1b95ff9e6cd10eacfdcf7"
+                  ? "flex text-[1.4rem] text-[#5661CB] mt-[2px] mr-4 cursor-pointer"
+                  : "hidden"
+              }
+            >
+              <RiAdminLine />
+            </Link>
             <img
               src={star}
               alt="star"
