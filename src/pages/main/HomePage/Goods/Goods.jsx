@@ -20,7 +20,7 @@ function Goods(props) {
   }
 
   if (loading) {
-    return <div className="text-center">Loading...</div>;
+    return <div className="text-center mt-4">Loading...</div>;
   }
   if (goodsArr.length <= 0) {
     return <div>Nothing found</div>;
