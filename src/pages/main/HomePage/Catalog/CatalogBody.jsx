@@ -55,7 +55,7 @@ function CatalogBody(props) {
 
   return (
     <section className="pt-16 lg:pt-0">
-      <div className="lg:flex lg:justify-between lg:mx-[20px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="lg:flex lg:justify-between lg:ml-[12px] lg:mx-[18px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
         <div className="hidden lg:grid lg:pl-[11px] ml-[9px] lg:w-[28%] shadow lg:py-4">
           <div className="">{categories}</div>
         </div>

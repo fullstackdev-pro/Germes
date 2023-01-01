@@ -5,7 +5,7 @@ import { MdOutlineToday } from "react-icons/md";
 
 function Services(props) {
   return (
-    <section className="mt-[45px] px-[20px] lg:mx-[10px] xxl:ml-[232px] xxl:mr-[266px]">
+    <section className="mt-[45px] px-[20px] lg:mx-[6px] xxl:ml-[232px] xxl:mr-[266px]">
       <h2 className="text-[20px] font-medium">Дополнительные услуги</h2>
       <div className="mt-[22px] gap-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-8">
         <div className="text-center shadow-md rounded-xl hover:bg-[#5661CB] hover:text-white lg:text-left cursor-pointer">

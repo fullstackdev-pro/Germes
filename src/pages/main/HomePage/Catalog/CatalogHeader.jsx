@@ -59,7 +59,7 @@ function CatalogHeader(props) {
   return (
     <section>
       {/* small */}
-      <div className="mt-5 ml-2 bg-[#5661CB] px-3 rounded-lg md:flex md:justify-between lg:hidden fixed w-[96%] z-[5]">
+      <div className="mt-4 lg:ml-2 bg-[#5661CB] px-3 rounded-lg md:flex md:justify-between lg:hidden fixed w-[95%] sm:w-[96%] z-[5]">
         <div className="flex justify-between relative">
           <img
             src={Vector1}
@@ -107,7 +107,7 @@ function CatalogHeader(props) {
         </div>
       </div>
 
-      <div className="hidden lg:flex lg:justify-start mt-4 xxl:ml-[232px] xxl:mr-[248px] lg:ml-[20px] ">
+      <div className="hidden lg:flex lg:justify-start mt-4 xxl:ml-[232px] xxl:mr-[248px] lg:ml-[12px] ">
         <div className="flex justify-start bg-[#5661CB] px-4 mx-2 w-[29%] rounded-md ">
           <img src={Vector1} alt="Vector1" className="py-3 " />
           <div className="table">

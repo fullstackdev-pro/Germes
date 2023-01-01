@@ -62,7 +62,7 @@ function HeaderPage(props) {
             <div
               className={`${
                 menu ? "fixed" : "hidden"
-              } p-[20px] pt-0 left-0 top-[3.6rem] rounded absolute z-[500] bg-white w-[100vw] h-[100vh] overflow-y-auto`}
+              } p-[20px] pt-12 left-0 top-[3.6rem] rounded absolute z-10 bg-white w-[100vw] h-[100vh] overflow-y-auto`}
             >
               <Link
                 onClick={() => {

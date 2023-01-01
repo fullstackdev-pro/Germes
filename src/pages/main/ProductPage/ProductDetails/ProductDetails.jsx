@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { dataFetching, loadingEnd, selectedProduct } from "../../../../redux/actions";
+import {
+  addToBacket,
+  dataFetching,
+  loadingEnd,
+  selectedProduct,
+} from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 // import { FaTelegramPlane } from "react-icons/fa";
@@ -19,10 +24,11 @@ function ProductDetails(props) {
   const { productId } = useParams();
   const [showAll, setShowAll] = useState(false);
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.loading)
+  const loading = useSelector((state) => state.loading);
+  const backet = useSelector((state) => state.backedItems);
 
   const fetchProductDetail = async () => {
-    dispatch(dataFetching())
+    dispatch(dataFetching());
     const response = await axios
       .get(`${process.env.REACT_APP_API_KEY}/product/${productId}`)
       .catch((e) => console.log("Error ", e.message));
@@ -38,6 +44,13 @@ function ProductDetails(props) {
     };
     // eslint-disable-next-line
   }, [productId]);
+
+  function toBacket(title, remainder, amount, salePrice,  idCode,) {
+    let result = backet.findIndex((items) => items.idCode === idCode);
+    if (result === -1) {
+      dispatch(addToBacket({ title, remainder, amount, salePrice,  idCode, }));
+    }
+  }
 
   const data = useSelector((state) => state.selectedProduct);
   const {
@@ -56,17 +69,17 @@ function ProductDetails(props) {
     quantitypallet,
     quantitycar,
     color,
+    remainder,
+    idCode
   } = data;
 
-  if(loading) {
-    return(
-      <div>Loading...</div>
-    )
+  if (loading) {
+    return <div className="mt-16 text-center text-[2rem]">Loading...</div>;
   }
   return (
     <div
       key={_id}
-      className="border-none pt-16 lg:pt-0 md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative xxl:ml-[232px] xxl:mr-[266px] lg:ml-[20px]"
+      className="border-none pt-16 md:pt-20 lg:pt-4 md:border-[#8686864D] md:rounded md:pr-1 md:py-4 md:relative xxl:ml-[232px] xxl:mr-[266px] lg:ml-[5px]"
     >
       <p className="text-[16px] font-medium md:text-[16px] mx-[20px]">
         {title}
@@ -119,7 +132,7 @@ function ProductDetails(props) {
 
         <div className="md:border-[1px] mt-[14px] md:w-full md:px-6 md:mr-[18px]">
           <p className="text-[16px] font-medium md:text-[14px] mx-[20px] md:mt-[15px]">
-            Производитель: {title}
+            Производитель: {manufacturer}
           </p>
           <p className="text-[16px] font-medium md:text-[14px] mx-[20px] hidden md:flex md:mt-[8px]">
             Марка прочности: {brand}
@@ -146,7 +159,12 @@ function ProductDetails(props) {
                 <span className="text-[#7D7D7D] md:hidden">
                   Цена со склада:
                 </span>
-                <input type="radio" name="price" id="" className="mr-4 hidden md:inline"/>
+                <input
+                  type="radio"
+                  name="price"
+                  id=""
+                  className="mr-4 hidden md:inline"
+                />
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-16 md:pl-0 ${
                     status === "Лучшая цена" ? "text-red-600" : ""
@@ -159,11 +177,17 @@ function ProductDetails(props) {
               <p className="text-[#7D7D7D] hidden md:flex text-[14px]">
                 Цена со склада:
               </p>
+
               <div className="mt-[14px] md:mt-[10px]">
                 <span className="text-[#7D7D7D] md:hidden">
                   Цена с доставкой:
                 </span>
-                <input type="radio" name="price" id="" className="mr-4 hidden md:inline"/>
+                <input
+                  type="radio"
+                  name="price"
+                  id=""
+                  className="mr-4 hidden md:inline"
+                />
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-12 md:pl-0 ${
                     status === "Лучшая цена" ? "text-red-600" : ""
@@ -193,7 +217,8 @@ function ProductDetails(props) {
 
           <div className="mt-[24px] mx-[16px] text-center md:flex md:justify-start md:mb-[20px]">
             <div>
-              <button className="w-[63%] border-2 border-[#5661CB] p-2 rounded-md md:w-full md:px-[28px]">
+              <button className="w-[63%] border-2 border-[#5661CB] p-2 rounded-md md:w-full md:px-[28px]"
+              onClick={() => {toBacket(title, remainder, 1, salePrice,  idCode)}}>
                 Добавить в корзину
               </button>
               <input
@@ -217,7 +242,10 @@ function ProductDetails(props) {
               <AiOutlineCalculator className="text-[1.2rem] text-[#5661CB] ml-[1rem] mr-4" />{" "}
               Онлайн калькулятор
             </button>
-            <Link to="/delivery" className="flex mt-[13px] py-2 pl-1 border-[1px] border-[#5661CB] w-full rounded cursor-pointer ml-2">
+            <Link
+              to="/delivery"
+              className="flex mt-[13px] py-2 pl-1 border-[1px] border-[#5661CB] w-full rounded cursor-pointer ml-2"
+            >
               <BsTruck className="text-[1.2rem] text-[#5661CB] ml-[1rem] mr-4" />{" "}
               Расчет доставки
             </Link>

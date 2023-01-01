@@ -104,7 +104,7 @@ function Goods(props) {
           <button
             className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer"
             onClick={() => {
-              toBacket(title, remainder, 1, salePrice,  idCode, );
+              toBacket(title, remainder, 1, salePrice,  idCode);
             }}
           >
             <SlBasket className="" />
@@ -119,7 +119,7 @@ function Goods(props) {
 
   return (
     <Fragment>
-      <div className="mt-[20px] md:flex md:justify-between md:px-[20px] xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="mt-[20px] md:flex md:justify-between md:px-[8px] lg:mr-[14px] xxl:ml-[232px] xxl:mr-[266px]">
         <h1 className="mt-16 lg:mt-0 text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px] ">
           Спецпредложения
         </h1>
@@ -128,7 +128,7 @@ function Goods(props) {
           <HiOutlineArrowNarrowRight className="mt-1 ml-2" />
         </p>
       </div>
-      <div className="px-[12px] mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:ml-[20px] lg:mr-[10px] xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="pr-[12px] mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:ml-[20px] lg:mr-[10px] xxl:ml-[232px] xxl:mr-[266px]">
         {goodsList}
       </div>
     </Fragment>
