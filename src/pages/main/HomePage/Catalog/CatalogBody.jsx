@@ -55,7 +55,7 @@ function CatalogBody(props) {
 
   return (
     <section className="pt-16 lg:pt-0">
-      <div className="lg:flex lg:justify-between lg:ml-[12px] lg:mx-[18px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="lg:flex lg:justify-between mx-1 lg:ml-[12px] lg:mx-[18px] lg:pb-4 xxl:ml-[232px] xxl:mr-[266px]">
         <div className="hidden lg:grid lg:pl-[11px] ml-[9px] lg:w-[28%] shadow lg:py-4">
           <div className="">{categories}</div>
         </div>
@@ -135,7 +135,7 @@ function CatalogBody(props) {
         </div>
       </div>
 
-      <div className="flex justify-between text-[11px] ml-[9px] mt-[19px] sm:px-4 md:px-0 md:ml-8 lg:ml-8 lg:mr-6 lg:text-[14px] xl:mr-[2rem] xl:ml-[23rem] xxl:ml-[600px] xxl:mr-[280px]">
+      <div className="flex justify-between text-[11px] ml-[10px] mt-[19px] sm:px-4 md:px-0 md:ml-8 lg:mr-6 lg:text-[14px] xl:mr-[2rem] xl:ml-[23rem] xxl:ml-[600px] xxl:mr-[280px]">
         <div className="flex">
           <BsTruck className="bg-[#9FA6EE1A] text-[#5661CB] text-[2rem] p-[4px] rounded-md mr-[6px]" />{" "}
           Доставка товара и аренда спецтехники
