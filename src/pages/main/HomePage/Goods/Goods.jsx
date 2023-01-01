@@ -50,7 +50,7 @@ function Goods(props) {
 
         <img
           src={require("../../../../img/goods/1.png")}
-          className="p-4 md:mt-[30px] md:mx-[40px]"
+          className="p-4 md:mt-[4px] "
           alt="goods"
         />
 
@@ -128,7 +128,7 @@ function Goods(props) {
           <HiOutlineArrowNarrowRight className="mt-1 ml-2" />
         </p>
       </div>
-      <div className="pr-[12px] mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:ml-[20px] lg:mr-[10px] xxl:ml-[232px] xxl:mr-[266px]">
+      <div className="pr-[12px] mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:ml-[9px] lg:ml-[20px] lg:mr-[10px] xxl:ml-[232px] xxl:mr-[266px]">
         {goodsList}
       </div>
     </Fragment>
