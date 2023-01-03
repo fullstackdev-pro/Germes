@@ -230,7 +230,10 @@ function ProductDetails(props) {
               <input
                 className="w-[30%] ml-4 py-2 px-8 border-2 border-[#BDBDBD] rounded-md md:hidden"
                 type="number"
-                placeholder="288"
+                placeholder="1"
+                onChange={handleChange}
+                min="0"
+                name={idCode}
               />
             </div>
             <div>

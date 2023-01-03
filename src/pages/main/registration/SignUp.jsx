@@ -47,7 +47,7 @@ function SignUp(props) {
   async function Register() {
     if (userName && email && password && password === cPassword) {
       await axios
-        .post("http://localhost:5001/api/register", {
+        .post(`${process.env.REACT_APP_API_KEY}/register`, {
           username: userName,
           email: email,
           password: password,

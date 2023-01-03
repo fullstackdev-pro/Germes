@@ -22,7 +22,7 @@ function LogIn(props) {
   async function Login() {
     if (email && password) {
       await axios
-        .post("http://localhost:5001/api/login", {
+        .post(`${process.env.REACT_APP_API_KEY}/login`, {
           email: email,
           password: password,
         })
