@@ -10,7 +10,7 @@ function CategoryDetails(props) {
   const { catalogName } = useParams();
   const data = useSelector((state) => state.data);
 
-  let goodsList = data.item.map((data, index) => {
+  let goodsList = data?.item?.map((data, index) => {
     const { title, idCode, salePrice, info, status, catalog } = data;
     if (catalogName === "Others") {
       return (
@@ -41,7 +41,7 @@ function CategoryDetails(props) {
             />
           </div>
 
-          <div className="text-[12px] font-medium mx-2 md:text-[16px]">
+          <div className="text-[14px] font-medium mx-2 md:text-[16px]">
             <Link to={`/product/${idCode}`}>{title}</Link>
           </div>
 
@@ -52,7 +52,7 @@ function CategoryDetails(props) {
           <div className="md:flex md:justify-between md:mt-[10px]">
             <Link
               to="/delivery"
-              className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
+              className="px-2 underline underline-offset-1 text-[12px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
             >
               бесплатная доставка
             </Link>
@@ -64,7 +64,7 @@ function CategoryDetails(props) {
           <div className="flex justify-between">
             <div className={`px-2 mt-[7px] md:mt-[11px]`}>
               <span
-                className={`font-medium text-[14px] md:text-[18px] ${
+                className={`font-medium text-[16px] md:text-[18px] ${
                   status === "Лучшая цена" ? "text-red-600" : ""
                 }`}
               >
@@ -134,7 +134,10 @@ function CategoryDetails(props) {
         </p>
 
         <div className="md:flex md:justify-between md:mt-[10px]">
-          <Link to="/delivery" className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] ">
+          <Link
+            to="/delivery"
+            className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
+          >
             бесплатная доставка
           </Link>
           <button className="hidden underline underline-offset-1 md:grid md:text-[#219653] md:font-light md:text-[12px] md:pr-1 cursor-pointer">
@@ -163,7 +166,10 @@ function CategoryDetails(props) {
           </div>
         </div>
         <div className="flex">
-          <Link to={`/product/${idCode}`} className="mx-2 py-[8px] mt-[10px] w-[95%] text-center bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]">
+          <Link
+            to={`/product/${idCode}`}
+            className="mx-2 py-[8px] mt-[10px] w-[95%] text-center bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653]"
+          >
             Купить в 1 клик
           </Link>
           <button className="hidden md:grid px-4 pt-[0.7rem] h-10 mt-[0.7rem] text-[#5661CB] border-[1px] border-[#5661CB] rounded-md cursor-pointer">
@@ -176,89 +182,90 @@ function CategoryDetails(props) {
   });
 
   return (
-    <section className="lg:relative xxl:ml-[240px] xxl:mr-[245px] lg:ml-7 pb-8">
+    <section className="lg:relative xxl:ml-[240px] xxl:mr-[245px] lg:ml-7 pb-8 ">
       <div className="hidden lg:block lg:absolute mt-[15px] w-[22%] shadow-lg bg-white rounded-md">
-        <fieldset className="pl-4 m-4 mt-1">
+        <fieldset className="pl-2 m-4 mt-1">
           <legend className="text-[24px] font-medium">Производитель</legend>
           <div className="mt-1">
-            <input type="checkbox" name="winnerberger" id="" />
+            <input type="checkbox" name="Winnerberger" id="winnerberger" />
             <label htmlFor="winnerberger" className="ml-4 text-[18px]">
               winnerberger
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Алексеевский" id="" />
+            <input type="checkbox" name="Алексеевский" id="Алексеевский" />
             <label htmlFor="Алексеевский" className="ml-4 text-[18px]">
               Алексеевский
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Бакалинский" id="" />
+            <input type="checkbox" name="Бакалинский" id="Бакалинский" />
             <label htmlFor="Бакалинский" className="ml-4 text-[18px]">
               Бакалинский
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Богданович" id="" />
+            <input type="checkbox" name="Богданович" id="Богданович" />
             <label htmlFor="Богданович" className="ml-4 text-[18px]">
               Богданович
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Воткинский" id="" />
+            <input type="checkbox" name="Воткинский" id="Воткинский" />
             <label htmlFor="Воткинский" className="ml-4 text-[18px]">
               Воткинский
             </label>
           </div>
         </fieldset>
-        <fieldset className="pl-4 m-4 mt-1">
+        <fieldset className="pl-2 m-4 mt-1">
           <legend className="text-[24px] font-medium">Марка прочности</legend>
           <div className="mt-1">
-            <input type="checkbox" name="M125" id="" />
+            <input type="checkbox" name="M125" id="M125" />
             <label htmlFor="M125" className="ml-4 text-[16px]">
               M125
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="M150" id="" />
+            <input type="checkbox" name="M150" id="M150" />
             <label htmlFor="M150" className="ml-4 text-[16px]">
               M150
             </label>
           </div>
         </fieldset>
-        <fieldset className="pl-4 m-4 mt-1">
+        <fieldset className="pl-2 m-4 mt-1">
           <legend className="text-[24px] font-medium">Формат</legend>
           <div className="mt-1">
-            <input type="checkbox" name="Двойной кирпич" id="" />
+            <input type="checkbox" name="Двойной кирпич" id="Двойной кирпич" />
             <label htmlFor="Двойной кирпич" className="ml-4 text-[18px]">
               Двойной кирпич
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Огнеупорный" id="" />
+            <input type="checkbox" name="Огнеупорный" id="Огнеупорный" />
             <label htmlFor="Огнеупорный" className="ml-4 text-[18px]">
               Огнеупорный
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Ординарный" id="" />
+            <input type="checkbox" name="Ординарный" id="Ординарный" />
             <label htmlFor="Ординарный" className="ml-4 text-[18px]">
               Ординарный
             </label>
           </div>
         </fieldset>
-        <fieldset className="pl-4 mx-4 mt-1 mb-2">
+        <fieldset className="pl-2 mx-4 mt-1 mb-2">
           <legend className="text-[24px] font-medium">Пустотность</legend>
           <div className="mt-1">
-            <input type="checkbox" name="Полнотелый" id="" />
+            <input type="checkbox" name="Полнотелый" id="Полнотелый" />
             <label htmlFor="Полнотелый" className="ml-4 text-[18px]">
               {" "}
               Полнотелый
             </label>
           </div>
           <div className="mt-1">
-            <input type="checkbox" name="Пустотелый" id="" />
+            <input type="checkbox" name="Пустотелый" id="Пустотелый" />
             <label htmlFor="Пустотелый" className="ml-4 text-[18px]">
+              {" "}
               Пустотелый
             </label>
           </div>
@@ -270,15 +277,15 @@ function CategoryDetails(props) {
           <div className="mt-4 ml-1">
             <div className="flex justify-between">
               Сортировать по:{" "}
-              <span className="ml-2 text-[#5661CB] underline underline-offset-1 font-medium cursor-pointer">
+              <span className="ml-2 text-[#5661CB] underline underline-offset-1 font-medium cursor-pointer flex">
                 популярности
+                <AiOutlineDown className="mt-[6px] ml-2 cursor-pointer" />
               </span>{" "}
-              <AiOutlineDown className="mt-[6px] ml-2 cursor-pointer" />
             </div>
             <div></div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:min-h-[28rem]">
-            {goodsList[0].type === undefined ? "Nothin found" : goodsList}
+            {goodsList[0]?.type === undefined ? "Nothin found" : goodsList}
           </div>
         </div>
       </div>

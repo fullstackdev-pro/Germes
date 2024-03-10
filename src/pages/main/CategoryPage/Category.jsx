@@ -4,7 +4,7 @@ import CategoryDetails from "./CategoryDetails/CategoryDetails";
 
 function Category(props) {
   return (
-    <section className="">
+    <section className="relative">
       <CatalogHeader />
       <CategoryDetails />
     </section>

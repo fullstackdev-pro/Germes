@@ -65,7 +65,7 @@ function Goods(props) {
         <div className="md:flex md:justify-between md:mt-[10px]">
           <Link
             to="/delivery"
-            className="px-2 underline underline-offset-1 text-[11px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
+            className="px-2 underline underline-offset-1 text-[12px] text-[#7D7D7D] font-light cursor-pointer md:text-[12px] "
           >
             бесплатная доставка
           </Link>
@@ -97,9 +97,6 @@ function Goods(props) {
         <div className="flex">
           <Link
             to={`/product/${idCode}`}
-            onClick={() => {
-              toBacket(title, remainder, 1, salePrice, idCode);
-            }}
             className="mx-2 py-[8px] mt-[10px] w-[95%] bg-[#5661CB] text-white rounded-md cursor-pointer md:w-[70%] hover:bg-[#219653] text-center"
           >
             Купить в 1 клик
@@ -110,7 +107,7 @@ function Goods(props) {
               toBacket(title, remainder, 1, salePrice, idCode);
             }}
           >
-            <SlBasket className="" />
+            <SlBasket className=""  />
             <AiOutlineCheck className="hidden " />
           </button>
         </div>
@@ -123,10 +120,10 @@ function Goods(props) {
   return (
     <Fragment>
       <div className="mt-[20px] md:flex md:justify-between md:px-[8px] lg:mr-[14px] xxl:ml-[232px] xxl:mr-[266px]">
-        <h1 className="mt-16 lg:mt-0 text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px] ">
+        <h1 className="mt-4 lg:mt-0 text-[18px] text-center font-medium md:text-left px-[16px] md:text-[20px] lg:text-[26px] xl:text-[36px] ">
           Спецпредложения
         </h1>
-        <p className="hidden lg:flex text-[14px] text-red-600 font-medium mt-1 cursor-pointer xl:text-[16px]">
+        <p className="hidden lg:flex text-[14px] text-red-600 font-medium cursor-pointer xl:text-[16px]">
           Перейти в раздел скидок{" "}
           <HiOutlineArrowNarrowRight className="mt-1 ml-2" />
         </p>

@@ -38,14 +38,14 @@ export const deleteToBacked = (data) => ({
 
 export const changeAmount = (amount, index) => ({
   type: "CHANGEAMOUNT",
-  payload: {amount, index},
+  payload: { amount, index },
 });
 
 export const loadingEnd = () => ({
   type: "LOADINGEND",
-})
+});
 
 export const categoryFetched = (data) => ({
   type: "CATEGORYFETCHED",
-  payload: data
+  payload: data,
 });

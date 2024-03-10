@@ -4,27 +4,28 @@ import { BiCategory } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
 import { BsShopWindow } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { categoryFetched } from "../../../redux/actions";
 import axios from "axios";
 
 function AdminCategoryPage(props) {
   const category = useSelector((data) => data.category);
   const [categoryName, setCategoryName] = useState("");
+  const dispatch = useDispatch();
 
   function handleChangeCategory(e) {
     setCategoryName((prew) => (prew = e.target.value));
   }
 
-  function addCategory() {
-    axios({
+  async function addCategory() {
+    await axios({
       method: "post",
       url: `${process.env.REACT_APP_API_KEY}/admin/category`,
       data: { name: categoryName },
     }).then((response) => {
-      console.log(response);
-      categoryFetched(response.data.object);
+      dispatch(categoryFetched(response.data.categories));
       setCategoryName("");
+      return response;
     });
   }
 
@@ -33,7 +34,7 @@ function AdminCategoryPage(props) {
       method: "delete",
       url: `${process.env.REACT_APP_API_KEY}/admin/category/${name}`,
     }).then((response) => {
-      console.log(response);
+      dispatch(categoryFetched(response.data.categories));
     });
   }
 

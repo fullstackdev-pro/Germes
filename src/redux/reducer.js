@@ -1,15 +1,16 @@
-const initialState = {
-  imgName: "home",
-  loading: false,
-  data: [],
-  home: [],
-  selectedProduct: {},
-  backedItems: [],
-  category: []
-};
-
-const reducer = (state = initialState, action) => {
-  
+// eslint-disable-next-line
+export default (
+  state = {
+    imgName: "home",
+    loading: false,
+    data: [],
+    home: [],
+    selectedProduct: {},
+    backedItems: [],
+    category: [],
+  },
+  action
+) => {
   switch (action.type) {
     case "HEADER_IMAGE_CATEGORY":
       return {
@@ -27,8 +28,8 @@ const reducer = (state = initialState, action) => {
     case "LOADINGEND":
       return {
         ...state,
-        loading: false
-      }
+        loading: false,
+      };
 
     case "DATAFETCHED":
       Object.assign(state.data, action.payload);
@@ -75,8 +76,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         backedItems: [...state.backedItems].map((item) => {
           if (item.idCode === action.payload.index) {
-            item.amount = action.payload.amount
-            return item
+            item.amount = action.payload.amount;
+            return item;
           }
           return item;
         }),
@@ -84,11 +85,9 @@ const reducer = (state = initialState, action) => {
     case "CATEGORYFETCHED":
       return {
         ...state,
-        category: action.payload
-      }
+        category: action.payload,
+      };
     default:
       return state;
   }
 };
-
-export default reducer;

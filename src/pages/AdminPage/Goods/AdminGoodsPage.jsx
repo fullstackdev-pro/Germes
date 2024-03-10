@@ -16,6 +16,7 @@ function AdminGoodsPage(props) {
   const [idCode, setIdCode] = useState("");
   const [title, setTitle] = useState("");
   const [incomePrice, setIncomePrice] = useState("");
+  const [percentage, setPercentage] = useState("");
   const [salePrice, setSalePrice] = useState("");
   const [amount, setAmount] = useState("");
   const [status, setStatus] = useState("");
@@ -75,6 +76,12 @@ function AdminGoodsPage(props) {
 
   function handleChangeSalePrice(e) {
     setSalePrice((prew) => (prew = parseInt(e.target.value)));
+    setPercentage(((e.target.value - incomePrice) * 100) / incomePrice);
+  }
+
+  function handleChangePercentage(e) {
+    setPercentage((prew) => (prew = e.target.value));
+    setSalePrice(incomePrice + (incomePrice / 100) * e.target.value);
   }
 
   function handleChangeAmount(e) {
@@ -104,7 +111,7 @@ function AdminGoodsPage(props) {
     setInfo("");
   }
 
-  function yuborish() {
+  function Send() {
     setMessage((prew) => (prew = ""));
     if (have) {
       //put metodi
@@ -211,9 +218,8 @@ function AdminGoodsPage(props) {
           required
           className="border-[1px] w-full p-1 rounded px-4 mt-2"
           min="0"
-          value={
-            incomePrice ? ((salePrice - incomePrice) * 100) / incomePrice : ""
-          }
+          value={percentage}
+          onChange={handleChangePercentage}
         />
         <input
           type="number"
@@ -260,7 +266,7 @@ function AdminGoodsPage(props) {
         />
         <button
           className="border-[1px] w-full p-1 rounded px-4 mt-2 bg-[#5661CB] text-white text-[1.2rem]"
-          onClick={yuborish}
+          onClick={Send}
         >
           Yuborish
         </button>

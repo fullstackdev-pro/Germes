@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import {
+  addToBacket,
   dataFetching,
   loadingEnd,
   selectedProduct,
@@ -24,8 +25,10 @@ function ProductDetails(props) {
   const { productId } = useParams();
   const [showAll, setShowAll] = useState(false);
   const [amounts, setAmounts] = useState(1);
+  const [price, setPrice] = useState(true);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
+  const backet = useSelector((state) => state.backedItems);
 
   const fetchProductDetail = async () => {
     dispatch(dataFetching());
@@ -66,8 +69,12 @@ function ProductDetails(props) {
   } = data;
 
   function toBacket(amount, idCode) {
-    console.log(amount, idCode);
-    changeAmount(amount, idCode);
+    let result = backet.findIndex((items) => items.idCode === idCode);
+    if (result === -1) {
+      dispatch(addToBacket({ title, amount, salePrice, idCode }));
+    } else {
+      dispatch(changeAmount(amount, idCode));
+    }
   }
 
   function handleChange(e) {
@@ -161,7 +168,16 @@ function ProductDetails(props) {
                 <span className="text-[#7D7D7D] md:hidden">
                   Цена со склада:
                 </span>
-                <input type="radio" id="" className="mr-4 hidden md:inline" />
+                <input
+                  type="radio"
+                  id=""
+                  name="price"
+                  className="mr-4 hidden md:inline"
+                  checked={price ? "checked" : ""}
+                  onClick={() => {
+                    setPrice((prew) => (prew = true));
+                  }}
+                />
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-16 md:pl-0 ${
                     status === "Лучшая цена" ? "text-red-600" : ""
@@ -184,6 +200,9 @@ function ProductDetails(props) {
                   name="price"
                   id=""
                   className="mr-4 hidden md:inline"
+                  onClick={() => {
+                    setPrice((prew) => (prew = false));
+                  }}
                 />
                 <span
                   className={`font-medium text-[25px] md:text-[40px] pl-12 md:pl-0 ${
@@ -211,7 +230,8 @@ function ProductDetails(props) {
               <p className="text-[14px] mt-[10px] text-[#7D7D7D]">
                 Итого:{" "}
                 <span className="text-black">
-                  {salePrice * amounts} {" \u20BD "}
+                  {price ? salePrice : (salePrice + 8 * 10) * amounts}{" "}
+                  {" \u20BD "}
                 </span>{" "}
               </p>
             </div>
@@ -222,7 +242,7 @@ function ProductDetails(props) {
               <button
                 className="w-[63%] border-2 border-[#5661CB] p-2 rounded-md md:w-full md:px-[28px]"
                 onClick={() => {
-                  toBacket(amounts, idCode);
+                  toBacket(title, 1, salePrice, idCode);
                 }}
               >
                 Добавить в корзину

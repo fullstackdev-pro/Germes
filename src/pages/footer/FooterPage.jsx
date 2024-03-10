@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function FooterPage(props) {
   return (
-    <section className="bg-[#F7F7F7]">
+    <section className="bg-[#F7F7F7] bottom-0">
       <div className="lg:hidden block text-center">
         <div className="sm:mx-[80px] md:mx-[220px]">
           <div className="flex justify-between underline mx-[38px] text-[14px] font-medium pt-[23px]">
